@@ -1,42 +1,43 @@
 ﻿<!DOCTYPE html>
+
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Preinscripción Online</title>
+  
+    @Styles.Render("~/Content/bootstrap")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div id="MainContainer" class="container-fluid disableHorizontalScroll">
+        <header class="cabeza">
+            <div class="row">
+                @*HEADER*@
+                @Html.Partial("~/Views/Shared/Header.cshtml")
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+        </header>
+        <div class="row espacio-menu-fixed prueba">
+            <div class="col-xs-12 col-md-12 col-sm-12" style="padding-right:0">
+                @*BODY*@
+                @RenderBody()
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @*FOOTER*@
+                @Html.Partial("~/Views/Shared/Footer.cshtml")
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+
+
