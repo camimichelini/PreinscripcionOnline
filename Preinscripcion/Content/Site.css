@@ -1,4 +1,5 @@
 ﻿body {
+
     
     padding-bottom: 20px;
 }
@@ -36,17 +37,20 @@ textarea {
     background-color: #DDDCDC;
     padding-top: 1em;
     padding-bottom: 1em;
-    margin: 1em 4em 1em 4em;
+    margin: 1em 2em 1em 2em;
+    width: 94em;
 }
 
-#header {
-
+.no-padding {
+    padding: 0;
+    margin: 0;
+    border: 0;
 }
 
 h2.titulo{
     font-family: "Oswald";
     color: #6C6C6C;
-    padding-left: 2em;
+    padding-left: 1em;
     font-size: 2em;
 }
 
@@ -64,4 +68,9 @@ h2.titulo{
 .btn-primary:hover {
     background-color: #2C2B2B;
     border-color: #2C2B2B;
+}
+
+#footer{
+    width: 96em;
+    height: inherit;
 }
