@@ -29,10 +29,11 @@ namespace Entidades
         public string TipoAnalitico { get; set; }
         public string FotocAnalitico { get; set; }
 
-        
-
-
-
+        public virtual EstadoCivil EstadoCivil { get; set; }
+        public virtual Sexo Sexo { get; set; }
+        public virtual Localidad LugarNacimiento { get; set; }
+        public virtual Localidad LugarDomicilio { get; set; }
+        public virtual Carrera Carrera { get; set; }
 
     }
 }
