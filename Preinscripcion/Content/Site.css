@@ -29,8 +29,8 @@ textarea {
 
 /*Esta seria la tipografia, pero no se si esta mal la ruta o que!*/
 @font-face {
-    font-family: "Oswald";
-    src: url("Preinscripcion/fonts/oswald.light.ttf") format("truetype");
+    font-family: Oswald;
+    src: url("/fonts/oswald.light.ttf");
 }
 
 .cuerpo {
@@ -48,10 +48,10 @@ textarea {
 }
 
 h2.titulo{
-    font-family: "Oswald";
+    font-family: Oswald;
     color: #6C6C6C;
     padding-left: 1em;
-    font-size: 2em;
+    font-size: 2.3em;
 }
 
 .texto{
@@ -60,6 +60,9 @@ h2.titulo{
     font-size: 1.2em;
 }
 
+.btn{
+    font-family: Oswald;
+}
 .btn-primary.active {
     background-color: #6C6C6C;
     border-color: #6C6C6C;
