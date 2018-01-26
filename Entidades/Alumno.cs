@@ -33,7 +33,6 @@ namespace Entidades
         public virtual Sexo Sexo { get; set; }
         public virtual Localidad LugarNacimiento { get; set; }
         public virtual Localidad LugarDomicilio { get; set; }
-        public virtual Carrera Carrera { get; set; }
-
+    
     }
 }

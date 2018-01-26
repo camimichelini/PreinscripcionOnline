@@ -18,7 +18,9 @@ namespace Preinscripcion.Entidades
         public DateTime Hora { get; set; }
 
         public virtual Alumno Alumno { get; set; }
+        public virtual Carrera Carrera { get; set; }
         public virtual Turno Turno { get; set; }
+        
 
     }
 }
