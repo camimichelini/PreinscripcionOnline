@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    
     padding-bottom: 20px;
 }
 
@@ -21,4 +21,47 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+/*A PARTIR DE ACA ES TODO LO NUESTRO*/
+
+/*Esta seria la tipografia, pero no se si esta mal la ruta o que!*/
+@font-face {
+    font-family: "Oswald";
+    src: url("Preinscripcion/fonts/oswald.light.ttf") format("truetype");
+}
+
+.cuerpo {
+    background-color: #DDDCDC;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin: 1em 4em 1em 4em;
+}
+
+#header {
+
+}
+
+h2.titulo{
+    font-family: "Oswald";
+    color: #6C6C6C;
+    padding-left: 2em;
+    font-size: 2em;
+}
+
+.texto{
+    font-family: sans-serif;
+    color: grey;
+    font-size: 1.2em;
+}
+
+.btn-primary.active {
+    background-color: #6C6C6C;
+    border-color: #6C6C6C;
+}
+
+.btn-primary:hover {
+    background-color: #2C2B2B;
+    border-color: #2C2B2B;
 }
