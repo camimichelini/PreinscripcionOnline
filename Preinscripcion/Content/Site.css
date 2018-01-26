@@ -36,7 +36,7 @@ textarea {
 .cuerpo {
     background-color: #DDDCDC;
     padding-top: 1em;
-    padding-bottom: 1em;
+    padding-bottom: 5em;
     margin: 1em 2em 1em 2em;
     width: 94em;
 }
@@ -77,3 +77,9 @@ h2.titulo{
     width: 96em;
     height: inherit;
 }
+
+#right {
+    float: right;
+    margin-right: 1em;
+}
+
