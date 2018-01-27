@@ -81,6 +81,7 @@ h2.titulo{
     font-size: 1.1em;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
+    height:11em;
 }
 
 .texto-pequeño{
@@ -153,7 +154,7 @@ h2.titulo{
     }
 
     .footer{
-        width: 100%;    
+        width: 100%; 
         font-size: 1em;
     }
 
