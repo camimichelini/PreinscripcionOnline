@@ -1,7 +1,6 @@
-﻿body {
-
-    
-    padding-bottom: 20px;
+﻿/*GENERALES*/
+body {
+    padding-bottom: 0;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -10,9 +9,7 @@
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
+/* Override the default bootstrap behavior where horizontal description lists will truncate terms that are too long to fit in the left column */
 .dl-horizontal dt {
     white-space: normal;
 }
@@ -27,18 +24,18 @@ textarea {
 
 /*A PARTIR DE ACA ES TODO LO NUESTRO*/
 
-/*Esta seria la tipografia, pero no se si esta mal la ruta o que!*/
 @font-face {
     font-family: Oswald;
     src: url("/fonts/oswald.light.ttf");
 }
 
+@font-face {
+    font-family: Roboto;
+    src: url("/fonts/Roboto.ttf");
+}
+
 .cuerpo {
     background-color: #DDDCDC;
-    padding-top: 1em;
-    padding-bottom: 5em;
-    margin: 1em 2em 1em 2em;
-    width: 94em;
 }
 
 .no-padding {
@@ -50,19 +47,17 @@ textarea {
 h2.titulo{
     font-family: Oswald;
     color: #6C6C6C;
-    padding-left: 1em;
-    font-size: 2.3em;
 }
 
 .texto{
     font-family: sans-serif;
     color: grey;
-    font-size: 1.2em;
 }
 
 .btn{
     font-family: Oswald;
 }
+
 .btn-primary.active {
     background-color: #6C6C6C;
     border-color: #6C6C6C;
@@ -73,13 +68,86 @@ h2.titulo{
     border-color: #2C2B2B;
 }
 
-#footer{
-    width: 96em;
-    height: inherit;
-}
-
 #right {
     float: right;
     margin-right: 1em;
 }
 
+.footer {
+    background-color: #252525;
+    font-family: Roboto;
+    color: white;
+    text-align: center;
+    font-size: 1.1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.texto-pequeño{
+    font-size: 0.7em;
+}
+
+/*DESKTOP*/
+@media only screen and (min-width: 1024px) {
+    .cuerpo {
+        padding-top: 1em;
+        padding-bottom: 5em;
+        margin: 1em 2em 1em 2em;
+        width: 94em;
+    }
+
+    h2.titulo {
+        padding-left: 1em;
+        font-size: 2.3em;
+    }
+
+    .texto {
+        font-size: 1.2em;
+    }
+
+    /*#footer {
+        width: 96em;
+        height: inherit;
+    }*/
+}
+
+/*TABLET*/
+@media only screen and (min-width: 590px) and (max-width: 1024px) {
+
+}
+
+/*MOBILE*/
+@media only screen and (max-width: 590px) {
+    h2.titulo{
+        padding-left: 1.5em;
+        font-size: 1.5em
+    }
+
+    .cuerpo {
+        padding-top: 1em;
+        padding-bottom: 2em;
+        margin: 1em 2em 1em 2em;
+        width: 37em;
+    }
+
+    .texto{
+        font-size: 0.8em;
+    }
+
+    .btn-primary{
+        font-size: 1.2em;
+        padding: 0.7em;
+    }
+
+    #header{
+        width: 15em;
+        padding-left: 1em;
+    }
+
+    .footer{
+        width:inherit;    
+        font-size: 1em;
+    }
+
+ 
+}
