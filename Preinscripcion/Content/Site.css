@@ -109,6 +109,14 @@ h2.titulo{
         width: 96em;
         height: inherit;
     }*/
+
+    .contacto {
+        float: left;
+    }
+
+    .seguinos {
+        float: right;
+    }
 }
 
 /*TABLET*/
@@ -145,7 +153,7 @@ h2.titulo{
     }
 
     .footer{
-        width:inherit;    
+        width: 100%;    
         font-size: 1em;
     }
 
