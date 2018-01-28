@@ -1,11 +1,11 @@
 ﻿
 @{
-    ViewBag.Title = "Formulario";
+    ViewBag.Title = "ConfirmarDatos";
 }
 
-<h2 class="titulo2">Completa el formulario</h2> </br> 
+<h2 class="titulo2">Confirma tus datos</h2> </br>
 
-<h4 class="titulo2">Datos personales</h4> </br> 
+<h4 class="titulo2">Datos personales</h4> </br>
 
 <form method="post">
 
@@ -21,7 +21,7 @@
                     <label class="radio-inline"><input type="radio" name="optradio" value="masculino">M</label>
                     <label class="radio-inline"><input type="radio" name="optradio" value="femenino">F</label>
                     <label class="radio-inline"><input type="radio" name="optradio" value="otro">O</label>
-                   
+
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div><label for="Nacionalidad">Nacionalidad:</label> <select class="form-control"> </select></div> <br />
             <div><label for="Localidad de Nacimiento">Localidad de Nacimiento:</label> <select class="form-control"> </select></div> <br />
             <div><label for="Estado Civil">Estado Civil:</label> <select class="form-control"> </select></div> <br />
-        </div> 
+        </div>
     </div>
 
     <div class="row">
@@ -76,7 +76,7 @@
         </div><br />
     </div>
 
-      
+
     <div class="row col-xs-12 col-md-12 col-sm-12 form-group form1">
         <h4 class="titulo2">Otros Datos</h4>
 
@@ -92,13 +92,12 @@
                 <input type="file" id="FotoCarnet">
             </div>
         </div>
-    </div> 
+    </div>
 
     <div class="botonform">
-        @Html.ActionLink("Continuar", "ConfirmarDatos", "Alumno", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Modificar", "ModificarDatos", "Alumno", null, new { @class = "btn btn-default" })
+        @*@Html.ActionLink("Continuar", "Turnera", "Alumno", null, new { @class = "btn btn-default" })
+            va a la pantalla que tiene que hacer clari, agregar!!!*@
     </div>
 </form>
 
-
-
-    

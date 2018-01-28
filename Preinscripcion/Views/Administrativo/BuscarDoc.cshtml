@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "BuscarDoc";
+    ViewBag.Title = "Buscar Alumno";
 }
 
 <div class="texto">
@@ -8,7 +8,8 @@
     <b>Buscar alumno</b><br><br>
     <form method="POST" action="">
         Documento: <input type="number" name="doc" id="doc"><br><br>
-        <a href="/Administrativo/VerificarDatos" type="submit" class="btn btn-primary btn-lg active" role="button" id="right">Buscar</a>
+        @Html.ActionLink("Buscar", "VerificarDatosAdmin", "Alumno", null, new { @class = "btn btn-default" })
+        @*<a href="/Administrativo/VerificarDatos" type="submit" class="btn btn-primary btn-lg active" role="button" id="right">Buscar</a>*@
     </form>
 
 </div>
