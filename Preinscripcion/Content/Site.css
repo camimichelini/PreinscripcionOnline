@@ -106,10 +106,6 @@ h2.titulo{
         font-size: 1.2em;
     }
 
-    /*#footer {
-        width: 96em;
-        height: inherit;
-    }*/
 
     .contacto {
         float: left;
@@ -156,6 +152,7 @@ h2.titulo{
     .footer{
         width: 100%; 
         font-size: 1em;
+        height: 23em;
     }
 
  
