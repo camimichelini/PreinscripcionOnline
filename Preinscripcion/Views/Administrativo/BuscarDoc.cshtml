@@ -4,12 +4,11 @@
 }
 
 <div class="texto">
-    <a href="" role="button" id="right">Cerrar sesión</a><br /><br />
+    <a href="" role="button" class="right">Cerrar sesión</a><br /><br />
     <b>Buscar alumno</b><br><br>
     <form method="POST" action="">
         Documento: <input type="number" name="doc" id="doc"><br><br>
-        @Html.ActionLink("Buscar", "VerificarDatosAdmin", "Alumno", null, new { @class = "btn btn-default" })
-        @*<a href="/Administrativo/VerificarDatos" type="submit" class="btn btn-primary btn-lg active" role="button" id="right">Buscar</a>*@
+        @Html.ActionLink("Buscar", "VerificarDatosAdmin", "Alumno", null, new { @class = "btn btn-primary btn-lg active right" })
     </form>
 
 </div>
