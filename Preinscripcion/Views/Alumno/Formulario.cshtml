@@ -3,7 +3,7 @@
     ViewBag.Title = "Formulario";
 }
 
-<h2 class="titulo2">Completa el formulario</h2> </br> 
+<h3 class="titulo2">Completa el formulario</h3> </br> 
 
 <h4 class="titulo2">Datos personales</h4> </br> 
 
@@ -11,11 +11,11 @@
 
     <div class="row">
         <div class="col-xs-6 col-md-6 col-sm-6 form-group form1">
-            <div> <label for="Nombre">Nombre/s:</label> <input class="form-control" type="text" placeholder=" "></div> <br />
-            <div> <label for="Tipo de Documento">Tipo de Documento:</label> <select class="form-control"> </select></div> <br />
-            <div> <label for="Fecha de Nacimiento">Fecha de Nacimiento:</label> <input class="form-control" type="text" placeholder=" "></div> <br />
-            <div> <label for="Pcia. de Nacimiento">Pcia.de nacimiento:</label> <select class="form-control"> </select></div> <br />
-            <div class="form-group">
+            <div class="textooscuro"> <label for="Nombre">Nombre/s:</label> <input class="form-control" type="text" placeholder=" "></div> <br />
+            <div class="textooscuro"> <label for="Tipo de Documento">Tipo de Documento:</label> <select class="form-control"> </select></div> <br />
+            <div class="textooscuro"> <label for="Fecha de Nacimiento">Fecha de Nacimiento:</label> <input class="form-control" type="date" placeholder=" "></div> <br />
+            <div class="textooscuro"> <label for="Pcia. de Nacimiento">Pcia.de nacimiento:</label> <select class="form-control"> </select></div> <br />
+            <div class="form-group textooscuro">
                 <label for="Sexo">Sexo:</label>
                 <div>
                     <label class="radio-inline"><input type="radio" name="optradio" value="masculino">M</label>
@@ -27,68 +27,67 @@
         </div>
 
         <div class="col-xs-6 col-md-6 col-sm-6 form-group form2">
-            <div><label for="Apellido">Apellido/s:</label> <input class="form-control" type="text" placeholder=" "></div> <br />
-            <div><label for="NumDoc">Nro. de documento:</label> <input class="form-control" type="text" placeholder=" "></div> <br />
-            <div><label for="Nacionalidad">Nacionalidad:</label> <select class="form-control"> </select></div> <br />
-            <div><label for="Localidad de Nacimiento">Localidad de Nacimiento:</label> <select class="form-control"> </select></div> <br />
-            <div><label for="Estado Civil">Estado Civil:</label> <select class="form-control"> </select></div> <br />
+            <div class="textooscuro"><label for="Apellido">Apellido/s:</label> <input class="form-control" type="text" placeholder=" "></div> <br />
+            <div class="textooscuro"><label for="NumDoc">Nro. de documento:</label> <input class="form-control" type="text" placeholder=" "></div> <br />
+            <div class="textooscuro"><label for="Nacionalidad">Nacionalidad:</label> <select class="form-control"> </select></div> <br />
+            <div class="textooscuro"><label for="Localidad de Nacimiento">Localidad de Nacimiento:</label> <select class="form-control"> </select></div> <br />
+            <div class="textooscuro"><label for="Estado Civil">Estado Civil:</label> <select class="form-control"> </select></div> <br />
         </div> 
     </div>
 
     <div class="row">
         <div>
             <div class="col-xs-12 col-md-12 col-sm-12 form-group formlargo">
-                <label for="Domicilio">Domicilio:</label> <input class="form-control inputlargo" type="text" placeholder=" ">
+                <label class="textooscuro" for="Domicilio">Domicilio:</label> <input class="form-control inputlargo" type="text" placeholder=" ">
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-6 col-md-6 col-sm-6 form-group form1">
-            <div> <label for="Pcia. de Domicilio">Pcia. de Domicilio:</label> <select class="form-control"> </select></div><br />
-            <div> <label for="Teléfono">Teléfono:</label> <input class="form-control" type="text" placeholder=" "> </div><br />
-            <div> <label for="Email">Email:</label> <input class="form-control" type="text" placeholder=" "> </div><br />
+            <div class="textooscuro"> <label for="Pcia. de Domicilio">Pcia. de Domicilio:</label> <select class="form-control"> </select></div><br />
+            <div class="textooscuro"> <label for="Teléfono">Teléfono:</label> <input class="form-control" type="text" placeholder=" "> </div><br />
+            <div class="textooscuro"> <label for="Email">Email:</label> <input class="form-control" type="text" placeholder=" "> </div><br />
             <div class="form-group">
-                <label for="FotoCarnet">Foto Carnet</label>
+                <label class="textooscuro" for="FotoCarnet">Foto Carnet</label>
                 <input type="file" id="FotoCarnet">
             </div><br />
         </div>
 
         <div class="col-xs-6 col-md-6 col-sm-6 form-group form2">
-            <div> <label for="Localidad de Domicilio">Localidad de Domicilio:</label> <select class="form-control"> </select></div><br />
-            <div> <label for="Celular">Celular:</label> <select class="form-control"> </select></div><br />
+            <div class="textooscuro"> <label for="Localidad de Domicilio">Localidad de Domicilio:</label> <select class="form-control"> </select></div><br />
+            <div class="textooscuro"> <label for="Celular">Celular:</label> <select class="form-control"> </select></div><br />
             <div>
-                <label for="Enmancipacion">Enmancipación:</label>
+                <label class="textooscuro" for="Enmancipacion">Enmancipación:</label>
                 <div>
-                    <label class="radio-inline"><input type="radio" name="optradio" value="si">S</label>
-                    <label class="radio-inline"><input type="radio" name="optradio" value="no">N</label>
+                    <label class="textooscuro radio-inline"><input type="radio" name="optradio" value="si">S</label>
+                    <label class="textooscuro radio-inline"><input type="radio" name="optradio" value="no">N</label>
                 </div>
             </div><br />
             <div class="form-group">
-                <label for="FotocopiaDocumento">Fotocopia Documento</label> <input type="file" id="FotoCarnet">
+                <label class="textooscuro" for="FotocopiaDocumento">Fotocopia Documento</label> <input type="file" id="FotoCarnet">
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-12 col-md-12 col-sm-12 form-group formlargo">
-            <label for="NomyApe">Nombre y Apellido de Madre, Padre o Tutor:</label> <input class="form-control formlargo" type="text" placeholder=" ">
+            <label class="textooscuro" for="NomyApe">Nombre y Apellido de Madre, Padre o Tutor:</label> <input class="form-control inputlargo" type="text" placeholder=" ">
         </div><br />
     </div>
 
-      
+    <h4 class="titulo2">Otros Datos</h4>
     <div class="row col-xs-12 col-md-12 col-sm-12 form-group form1">
-        <h4 class="titulo2">Otros Datos</h4>
-
+       
         <div>
-            <div> <label for="Carrera">Carrera a Inscribirse:</label> <select class="form-control"> </select></div><br />
-            <div> <label for="NombreColegio">Nombre de Colegio Secundario:</label> <input class="form-control" type="text" placeholder=" "> </div><br />
+            <div> <label class="textooscuro" for="Carrera">Carrera a Inscribirse:</label> <select class="form-control"> </select></div><br />
+            <div> <label class="textooscuro" for="NombreColegio">Nombre de Colegio Secundario:</label> <input class="form-control" type="text" placeholder=" "> </div><br />
             <div class="form-group">
-                <label for="Analitico">Analítico</label>
+                <label class="textooscuro" for="Analitico">Analítico</label>
                 <input type="file" id="FotoCarnet">
             </div>
             <div class="form-group">
-                <label for="Certificado">Certificado de Trabajo</label>
+                <label class="textooscuro" for="Certificado">Certificado de Trabajo</label>
                 <input type="file" id="FotoCarnet">
             </div>
         </div>

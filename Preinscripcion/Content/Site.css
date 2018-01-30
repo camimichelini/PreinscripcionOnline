@@ -59,6 +59,12 @@ h2.titulo{
     color: grey;
 }
 
+.textooscuro {
+    font-family: sans-serif;
+    color: #3f3f3f;
+}
+
+
 .btn{
     font-family: Oswald;
 }
@@ -73,10 +79,11 @@ h2.titulo{
     border-color: #2C2B2B;
 }
 
-.right {
+.botonform {
     float: right;
-    margin-right: 1em;
+    margin-right: 12em;
 }
+
 
 .footer {
     background-color: #252525;
@@ -93,6 +100,10 @@ h2.titulo{
     font-size: 0.7em;
 }
 
+input {
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
 
 /*DESKTOP*/
 @media only screen and (min-width: 1024px) {
@@ -112,6 +123,10 @@ h2.titulo{
         font-size: 1.2em;
     }
 
+    .textooscuro {
+        font-size: 1.2em;
+    }
+
 
     .contacto {
         float: left;
@@ -121,11 +136,7 @@ h2.titulo{
         float: right;
     }
 
-    .botonform {
-        float: right;
-        margin-right: 12em;
-    }
-
+   
     .form1 {
         padding-left: 20em;
     }
@@ -141,14 +152,12 @@ h2.titulo{
         max-width: 54em;
     }
 
-    .inicio1 {
-        padding-left: 43em;
+    .centrado {
+        align-items: center;
+        justify-content:center;
         padding-top: 5em;
     }
 
-    .inicio2 {
-        padding-left: 40em;
-    }
 }
 
 /*TABLET*/
