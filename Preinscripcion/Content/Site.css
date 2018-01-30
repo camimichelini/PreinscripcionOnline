@@ -73,7 +73,7 @@ h2.titulo{
     border-color: #2C2B2B;
 }
 
-#right {
+.right {
     float: right;
     margin-right: 1em;
 }

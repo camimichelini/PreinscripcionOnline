@@ -4,7 +4,7 @@
 }
 
 <div class="texto">
-        <a href="" role="button" id="right">Cerrar sesión</a><br/><br/>
+    <a href="" role="button" class="right">Cerrar sesión</a><br /><br />
     <p>
         El alumno XXXXXXX ha sido guardado en la base de datos del Sysacad en forma satisfactoria
     </p>
@@ -15,8 +15,9 @@
         En breve se enviará un mail al alumno con su número de legajo y contraseña para ingresar al sistema.
     </p>
 
-    <br/>
-    <a href="/Administrativo/BuscarDoc" class="btn btn-primary btn-lg active" role="button" id="right">Continuar</a>
+    <br />
+    @Html.ActionLink("Continuar", "BuscarDoc", "Administrativo", null, new { @class = "btn btn-primary btn-lg active right" })
+
 </div>
 
 

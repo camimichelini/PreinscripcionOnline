@@ -10,7 +10,8 @@
     <form action="" method="POST">
         Usuario: <input type="text" name="usu"><br><br>
         Contraseña: <input type="password" name="pass"><br><br>
-        <a href="/Administrativo/BuscarDoc" type="submit" class="btn btn-primary btn-lg active" role="button" id="right">Ingresar</a>
+        @Html.ActionLink("Ingresar", "BuscarDoc", "Administrativo", null, new { @class = "btn btn-primary btn-lg active right" })
+
     </form>
 
 </div>
