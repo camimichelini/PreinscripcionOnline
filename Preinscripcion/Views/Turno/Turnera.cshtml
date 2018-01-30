@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Turnera";
+}
+
+<h4>Elegí día y horario del turno para completar la inscripción</h4>
+
+<div> <label for="Día">Día:</label> </div><br />
+<div> <label for="Hora">Hora:</label> </div><br />
+
+ <div class="botonform">
+    @Html.ActionLink("Continuar", "ConfirmarTurno", "Turno", null, new { @class = "btn btn-default" })
+ </div>
+
+

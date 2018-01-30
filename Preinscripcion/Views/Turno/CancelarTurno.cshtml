@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "CancelarTurno";
+}
+
+<h4>Cancela tu Turno</h4>
+
+<div> <label for="Turno asignado">Turno Asignado:</label> </div><br />
+
+<div class="botonform">
+    @Html.ActionLink("Cancelar", "CancelarTurnoOk", "Turno", null, new { @class = "btn btn-default" })
+</div>

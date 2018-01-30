@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "ModificarTurno";
+}
+
+<h4>Modificá tu Turno</h4>
+
+<div> <label for="Turno asignado">Turno Asignado:</label> </div><br />
+<div> <label for="Nuevo Turno">Nuevo Turno:</label> </div> <br />
+
+
+<div class="botonform">
+    @Html.ActionLink("Modificar", "ModificarTurnoOk", "Turno", null, new { @class = "btn btn-default" })
+</div>

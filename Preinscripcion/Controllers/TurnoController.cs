@@ -14,6 +14,27 @@ namespace Preinscripcion.Controllers
             return View();
         }
 
+        public ActionResult ModificarTurno()
+        {
+            return View();
+        }
+        
+        public ActionResult CancelarTurno()
+        {
+            return View();
+        }
+
+        public ActionResult Turnera()
+        {
+            return View();
+        }
+
+        public ActionResult ConfirmarTurno()
+        {
+            return View();
+        }
+
+
         // GET: Turno/Details/5
         public ActionResult Details(int id)
         {
