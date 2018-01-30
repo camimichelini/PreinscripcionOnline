@@ -4,12 +4,14 @@
 }
 
 <div class="texto">
-    <a href="" role="button" class="botonform">Cerrar sesión</a><br /><br />
-    <b>Buscar alumno</b><br><br>
-    <form method="POST" action="">
-        Documento: <input type="number" name="doc" id="doc"><br><br>
-        @Html.ActionLink("Buscar", "VerificarDatosAdmin", "Alumno", null, new { @class = "btn btn-primary btn-lg active botonform" })
-    </form>
-
+    <a href="" role="button" class="botonform">Cerrar sesión</a><br />
 </div>
+    <h3 class="titulo2">Buscar alumno</h3>
+    <div class="textooscuro centrado">
+        <form method="POST" action="">
+            Documento: <input type="number" name="doc" id="doc"><br><br>
+            @Html.ActionLink("Buscar", "VerificarDatosAdmin", "Alumno", null, new { @class = "btn btn-primary btn-lg active botonform" })
+        </form>
+
+    </div>
 
