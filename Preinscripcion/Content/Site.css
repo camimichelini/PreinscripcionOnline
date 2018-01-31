@@ -154,7 +154,12 @@ input {
 
     .centrado {
 <<<<<<< HEAD
+<<<<<<< HEAD
         padding-top: 5em;
+=======
+        padding-top: 3em;
+        text-align:center;
+>>>>>>> cb2f2be468a5883cb50ef3e6086ae94ce778c598
 =======
         padding-top: 3em;
         text-align:center;
