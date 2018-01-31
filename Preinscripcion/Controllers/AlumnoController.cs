@@ -20,17 +20,7 @@ namespace Preinscripcion.Controllers
             return View();
         }
 
-        public ActionResult ConfirmarDatos()
-        {
-            return View();
-        }
-
         public ActionResult VerificarDatosAdmin()
-        {
-            return View();
-        }
-
-        public ActionResult ModificarDatos()
         {
             return View();
         }
