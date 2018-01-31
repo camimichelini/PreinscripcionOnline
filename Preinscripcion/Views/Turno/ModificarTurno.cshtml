@@ -5,9 +5,10 @@
 
 <h3 class="titulo2">Modificá tu Turno</h3>
 
-<div> <label for="Turno asignado">Turno Asignado:</label> </div><br />
-<div> <label for="Nuevo Turno">Nuevo Turno:</label> </div> <br />
-
+<div style="padding-left:320px">
+    <div class="textooscuro col-xs-4 col-md-4 col-sm-4"> <label for="Turno asignado">Turno Asignado:</label> <br /> <label for="Nuevo Turno">Nuevo Turno:</label></div>
+    <div class="textooscuro col-xs-8 col-md-8 col-sm-8"><select class="form-control"></select> <select class="form-control"></select> </div><br />
+</div> <br /> <br />
 
 <div class="botonform">
     @Html.ActionLink("Modificar", "ModificarTurnoOk", "Turno", null, new { @class = "btn btn-primary btn-lg active" })

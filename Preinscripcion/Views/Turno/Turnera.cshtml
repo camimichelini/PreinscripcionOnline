@@ -3,13 +3,15 @@
     ViewBag.Title = "Turnera";
 }
 
-<h3 class="titulo2">Elegí día y horario del turno para completar la inscripción</h3>
+<h3 class="titulo2">Elegí día y horario del turno para completar la inscripción</h3><br>
 
-<div> <label for="Día">Día:</label> </div><br />
-<div> <label for="Hora">Hora:</label> </div><br />
+<div style="padding-left:400px">
+    <div class="textooscuro col-xs-2 col-md-2 col-sm-2"> <label for="Turno">Turno:</label> </div>
+    <div class="textooscuro col-xs-10 col-md-10 col-sm-10 "><select class="form-control"></select></div> <br><br>
+</div>
 
  <div class="botonform">
-    @Html.ActionLink("Continuar", "ConfirmarTurno", "Turno", null, new { @class = "btn btn-primary btn-lg active" })
+    @Html.ActionLink("Continuar", "FinPreinscripcion", "Preinscripcion", null, new { @class = "btn btn-primary btn-lg active" })
  </div>
 
 
