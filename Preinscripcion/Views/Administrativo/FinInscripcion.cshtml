@@ -2,23 +2,15 @@
 @{
     ViewBag.Title = "Fin Inscripcion";
 }
-<div class="texto">
-    <a href="" role="button" class="botonform">Cerrar sesión</a><br /><br />
-    <div class="centrado">
-        <p>
-            El alumno XXXXXXX ha sido guardado en la base de datos del Sysacad en forma satisfactoria
-        </p>
-        <p>
-            Su legajo es : XXXXXXXX
-        </p>
-        <p>
-            En breve se enviará un mail al alumno con su número de legajo y contraseña para ingresar al sistema.
-        </p>
 
+  <a href="" role="button" class="botonform">Cerrar sesión</a><br/>
+  <div class="texto">
+        <p> El alumno XXXXXXX ha sido guardado en la base de datos del Sysacad en forma satisfactoria </p>
+        <p> Su legajo es : XXXXXXXX </p>
+        <p> En breve se enviará un mail al alumno con su número de legajo y contraseña para ingresar al sistema.</p>
         <br />
         @Html.ActionLink("Continuar", "BuscarDoc", "Administrativo", null, new { @class = "btn btn-primary btn-lg active botonform" })
+  </div>
 
-    </div>
-</div>
 
 

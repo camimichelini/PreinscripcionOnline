@@ -84,7 +84,6 @@ h2.titulo{
     margin-right: 12em;
 }
 
-
 .footer {
     background-color: #252525;
     font-family: Roboto;
@@ -105,6 +104,13 @@ input {
     border-radius: 4px;
 }
 
+.inicio {
+    text-align: center;
+    padding-top: 3em;
+}
+
+
+
 /*DESKTOP*/
 @media only screen and (min-width: 1024px) {
     .cuerpo {
@@ -121,6 +127,8 @@ input {
 
     .texto {
         font-size: 1.2em;
+        padding-left: 4em;
+        padding-top: 2em;
     }
 
     .textooscuro {
@@ -153,6 +161,10 @@ input {
     }
 
     .centrado {
+        padding-left: 20em;
+        padding-top: 1em;
+    }
+    /*    .centrado {
 <<<<<<< HEAD
 <<<<<<< HEAD
         padding-top: 5em;
@@ -164,7 +176,7 @@ input {
         padding-top: 3em;
         text-align:center;
 >>>>>>> cb2f2be468a5883cb50ef3e6086ae94ce778c598
-    }
+    }*/
 
 }
 
