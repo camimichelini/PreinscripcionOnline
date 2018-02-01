@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Preinscriocion.Entidades
+namespace Preinscripcion.Entidades
 {
     [Table("Administrativo")]
     public class Administrativo : Persona
     {
         [Key]
-        public int AministrativoId { get; set; }
+        public int AdministrativoId { get; set; }
         public string Usuario { get; set; }
         public string Contraseña { get; set; }
     }

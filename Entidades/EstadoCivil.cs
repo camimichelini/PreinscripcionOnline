@@ -13,7 +13,7 @@ namespace Preinscripcion.Entidades
     {
         [Key]
         public int EstadoCivilId { get; set; }
-        public string Descrpcion { get; set; }
+        public string Descripcion { get; set; }
       
     }
 }

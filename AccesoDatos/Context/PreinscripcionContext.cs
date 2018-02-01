@@ -15,6 +15,7 @@ namespace Preinscripcion.AccesoDatos.Context
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<PreinscripcionContext>());
         }
         //Lo que está entre < > se refiere a que le puedo hacer querys a esa tabla y lo que sigue es el nombre de la tabla, ej: tabla Alerta y c/ fila es una Alerta.
+        public virtual DbSet<Administrativo> Administrativo { get; set; }
         public virtual DbSet<Alumno> Alumno { get; set; }   //virtual use lazy mode
         public virtual DbSet<Carrera> Carrera { get; set; }
         public virtual DbSet<EstadoCivil> EstadoCivil { get; set; }
