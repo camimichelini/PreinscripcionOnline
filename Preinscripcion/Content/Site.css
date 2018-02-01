@@ -146,18 +146,22 @@ input {
 
    
     .form1 {
-        padding-left: 20em;
-    }
-
-    .form2 {
         padding-left: 6em;
     }
 
+    .form2 {
+        padding-left: 10em;
+    }
+
     .formlargo {
-        padding-left: 20em;
+        padding-left: 6em;
     }
     .inputlargo {
-        max-width: 54em;
+        max-width: 81.5em;
+    }
+
+    .inputform {
+        max-width:30em;
     }
 
     .centrado {
