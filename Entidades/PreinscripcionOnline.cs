@@ -1,4 +1,4 @@
-﻿using Entidades;
+﻿using Preinscripcion.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Preinscripcion.Entidades
 {
-    [Table("Preinscripcion")]
-    public class Preinscripcion
+    [Table("PreinscripcionOnline")]
+    public class PreinscripcionOnline
     {
         [Key]
-        public int PreinscripcionId { get; set; }
+        public int PreinscripcionOnlineId { get; set; }
         public DateTime Fecha { get; set; }
         public DateTime Hora { get; set; }
 

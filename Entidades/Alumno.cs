@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidades
+namespace Preinscripcion.Entidades
 {
     [Table("Alumno")]
     public class Alumno : Persona
@@ -19,7 +19,7 @@ namespace Entidades
         public string Domicilio { get; set;  }
         public int Telefono { get; set; }
         public int Celular { get; set; }
-        public EmailAddressAttribute Mail { get; set; }
+        public string Mail { get; set; }
         public Boolean Enmancipacion { get; set; }
         public string FotoCarnet { get; set; }
         public string FotocopiaDoc { get; set; }
