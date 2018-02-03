@@ -95,6 +95,10 @@ h2.titulo{
     height:11em;
 }
 
+.footer2{
+    padding-top: 0.5em;
+}
+
 .texto-pequeño{
     font-size: 0.7em;
 }
@@ -115,7 +119,7 @@ input {
 @media only screen and (min-width: 1024px) {
     .cuerpo {
         padding-top: 1em;
-        padding-bottom: 5em;
+        padding-bottom: 3em;
         margin: 1em 2em 1em 2em;
         width: 94em;
     }
@@ -127,7 +131,7 @@ input {
 
     .texto {
         font-size: 1.2em;
-        padding-left: 4em;
+        padding-left: 2em;
         padding-top: 2em;
     }
 
@@ -138,10 +142,12 @@ input {
 
     .contacto {
         float: left;
+        padding-left: 1em;
+        width: 50em;
     }
 
     .seguinos {
-        float: right;
+        width: 90em;
     }
 
    
@@ -156,6 +162,7 @@ input {
     .formlargo {
         padding-left: 6em;
     }
+
     .inputlargo {
         max-width: 81.5em;
     }
