@@ -1,6 +1,7 @@
 ﻿/*GENERALES*/
 body {
     padding-bottom: 0;
+    overflow-x: hidden;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -137,6 +138,8 @@ input {
 
     .textooscuro {
         font-size: 1.2em;
+        padding-left: 2em;
+        padding-top: 2em;
     }
 
 
