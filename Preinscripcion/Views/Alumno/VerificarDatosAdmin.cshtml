@@ -4,7 +4,7 @@
 }
 
 
-  <a href="" role="button" class="botonform">Cerrar sesión</a><br />
+@Html.ActionLink("Cerrar Sesión", "Logout", "Administrativo", null, new { @class = " botonform" })<br />
 
 
 <h2 class="titulo2">Verificar datos</h2> </br>
@@ -100,7 +100,7 @@
 
     <div class="botonform">
         @Html.ActionLink("Continuar", "FinInscripcion", "Administrativo", null, new { @class = "btn btn-primary btn-lg active" })
-           
+
     </div>
     <br />
 </form>

@@ -114,6 +114,11 @@ input {
     padding-top: 3em;
 }
 
+.alert {
+    text-align: center;
+    color: crimson;
+    font-size: initial;
+}
 
 
 /*DESKTOP*/
