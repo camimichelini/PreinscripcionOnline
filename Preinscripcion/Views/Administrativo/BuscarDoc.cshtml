@@ -3,17 +3,31 @@
     ViewBag.Title = "Buscar Alumno";
 }
 
+@Html.ActionLink("Cerrar Sesión", "Logout", "Administrativo", null, new { @class = "botonform" })<br />
+<h3 class="titulo2">Buscar alumno</h3>
 
-    <a href="" role="button" class="botonform">Cerrar sesión</a><br/>
 
-    <h3 class="titulo2">Buscar alumno</h3>
-    <div class="textooscuro centrado">
-        <form method="POST" action="">
-            Documento: <input type="number" name="doc" id="doc"><br><br>
-            @Html.ActionLink("Buscar", "VerificarDatosAdmin", "Alumno", null, new { @class = "btn btn-primary btn-lg active botonform" })
-        </form>
+@using (Html.BeginForm("BuscarDocu", "Administrativo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset pull-center>
+        <div class="centrado textooscuro">
+            <div class="form-group">
+                Documento: <input type="number" name="NroDoc" id="NroDoc" required><br><br>
+            </div>       
+            <button class="btn btn-primary btn-lg active botonform">Ingresar</button>
+        </div>
+    </fieldset>
+}
 
+<br />
+<br />
+
+@if (TempData["mensajeerror"] != null)
+{
+    <div class="alert" role="alert">
+        @TempData["mensajeerror"]
     </div>
-    <br />
-    <br />
+}
+</div>
+
 
