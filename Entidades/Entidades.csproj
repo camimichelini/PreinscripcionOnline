@@ -67,6 +67,7 @@
     <Compile Include="Carrera.cs" />
     <Compile Include="EstadoCivil.cs" />
     <Compile Include="Localidad.cs" />
+    <Compile Include="Nacionalidad.cs" />
     <Compile Include="Pais.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="PreinscripcionOnline.cs" />
