@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Preinscripcion.Entidades;
 using System.Web.Mvc;
+using System.Data.Entity;
+using System.Net;
+using System.Web.Helpers;
+using System.Configuration;
+using Preinscripcion.AccesoDatos.Context;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Preinscripcion.Controllers
 {
     public class AdministrativoController : Controller
     {
+        private PreinscripcionContext db = new PreinscripcionContext();
         // GET: Administrativo
         public ActionResult Index()
         {
@@ -94,6 +102,58 @@ namespace Preinscripcion.Controllers
         public ActionResult BuscarDoc()
         {
             return View();
+        }
+
+        public ActionResult Login(Administrativo admin)
+        {
+            string message = string.Empty;
+            var adminis = db.Administrativo
+                   .Where(b => b.Usuario == admin.Usuario)
+                   .FirstOrDefault();
+
+            if (adminis != null)
+            {
+                if (adminis.Contraseña.Equals(admin.Contraseña))
+                 {
+                    return RedirectToAction("BuscarDoc", "Administrativo");
+                  }
+                 else
+                 {
+                    TempData["mensajeerror"] = "La contraseña introducida es incorrecta";
+                    return RedirectToAction("Index", "Administrativo");
+                 }
+            }
+            else
+            {
+                TempData["mensajeerror"] = "El usuario no se encuentra registrado";
+                return RedirectToAction("Index", "Administrativo");
+            }
+
+        }
+
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            //or Session["LoginMapper"]  = null;
+            return RedirectToAction("Index", "Home");
+        }
+        public ActionResult BuscarDocu(Alumno alu)
+        {
+            string message = string.Empty;
+            var alum = db.Persona
+                   .Where(b => b.NroDoc == alu.NroDoc)
+                   .FirstOrDefault();
+
+            if (alum != null)
+            {
+                    return RedirectToAction("VerificarDatosAdmin", "Alumno", new { alu = alum });
+            }
+            else
+            {
+                TempData["mensajeerror"] = "El alumno no se encuentra registrado";
+                return RedirectToAction("BuscarDoc", "Administrativo");
+            }
         }
     }
 }

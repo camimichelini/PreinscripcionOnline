@@ -90,10 +90,10 @@ h2.titulo{
     font-family: Roboto;
     color: white;
     text-align: center;
-    font-size: 1.1em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    height:11em;
+    font-size: 1.3em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    height:14em;
 }
 
 .footer2{
@@ -101,7 +101,7 @@ h2.titulo{
 }
 
 .texto-pequeño{
-    font-size: 0.7em;
+    font-size: 0.8em;
 }
 
 input {
@@ -127,7 +127,7 @@ input {
         padding-top: 1em;
         padding-bottom: 3em;
         margin: 1em 2em 1em 2em;
-        width: 94em;
+        width: 102em;
     }
 
     h2.titulo {
@@ -151,11 +151,12 @@ input {
     .contacto {
         float: left;
         padding-left: 1em;
-        width: 50em;
+        width: 40em;
     }
 
     .seguinos {
-        width: 90em;
+        width: 72em;
+        padding-right: 1em;
     }
 
    
@@ -198,6 +199,11 @@ input {
     }*/
 
 }
+
+@media only screen and (min-width: 900px) and (max-width: 1023px){
+    .cuerpo{
+        width: 90em;
+    }
 
 /*TABLET*/
 @media only screen and (min-width: 590px) and (max-width: 1024px) {

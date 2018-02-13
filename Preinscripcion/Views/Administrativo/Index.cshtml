@@ -5,13 +5,31 @@
 
 <h3 class="titulo2">Iniciar sesión</h3><br>
 
-<div class="centrado textooscuro">
-    <form action="" method="POST">
-        Usuario: <input type="text" name="usu"><br><br>
-        Contraseña: <input type="password" name="pass"><br><br>
-        @Html.ActionLink("Ingresar", "BuscarDoc", "Administrativo", null, new { @class = "btn btn-primary btn-lg active botonform" })
-    </form>
+@using (Html.BeginForm("Login", "Administrativo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset pull-center>
+        <div class="centrado textooscuro">
+            <div class="form-group">
+                Usuario: <input type="text" name="usuario" id="usuario" required><br><br>
+            </div>
+            <div class="form-group">
+                Contraseña: <input type="password" name="contraseña" id="contraseña" required><br><br>
+            </div>
+            <button class="btn btn-primary btn-lg active botonform">Ingresar</button>
+        </div>
+    </fieldset>
+
+
+}
+<br />
+<br />
+<br>
+@if (TempData["mensajeerror"] != null)
+{
+    <div class="alert" role="alert">
+        @TempData["mensajeerror"]
+    </div>
+}
 </div>
 
-<br />
-<br />
+
