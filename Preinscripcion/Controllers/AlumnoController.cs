@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Preinscripcion.AccesoDatos.Context;
+using Preinscripcion.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,9 +16,94 @@ namespace Preinscripcion.Controllers
             return View();
         }
 
+        ////Prueba
+        //public ActionResult Form()
+        //{
+        //    var TiposDOC = new List<SelectListItem>();
+        //    TiposDOC = db.TipoDoc.Select(c => new SelectListItem()
+
+        //    {
+        //        Text = c.Descripcion,
+        //        Value = c.TipoDocId.ToString()
+
+        //    }).ToList();
+
+        //    ViewBag.TipoDocs = TiposDOC;
+
+        //    return View();
+        //}
+
         // FORMULARIO 
+        private PreinscripcionContext db = new PreinscripcionContext();
         public ActionResult Formulario()
         {
+
+            var TiposDOC = new List<SelectListItem>();
+            TiposDOC = db.TipoDoc.Select(c => new SelectListItem()
+
+            {
+                Text = c.Descripcion,
+                Value = c.TipoDocId.ToString()
+
+            }).ToList();
+
+            ViewBag.TipoDocs = TiposDOC;
+
+            var EstadosC = new List<SelectListItem>();
+            EstadosC = db.EstadoCivil.Select(c => new SelectListItem()
+
+            {
+                Text = c.Descripcion,
+                Value = c.EstadoCivilId.ToString()
+
+            }).ToList();
+
+            ViewBag.EstadosCivil = EstadosC;
+
+            var Carreras = new List<SelectListItem>();
+            Carreras = db.Carrera.Select(c => new SelectListItem()
+
+            {
+                Text = c.Nombre,
+                Value = c.CarreraId.ToString()
+
+            }).ToList();
+
+            ViewBag.Carreras = Carreras;
+
+            var nacionalidades = new List<SelectListItem>();
+            nacionalidades = db.Nacionalidad.Select(c => new SelectListItem()
+
+            {
+                Text = c.Descripcion,
+                Value = c.NacionalidadId.ToString()
+
+            }).ToList();
+
+            ViewBag.nacionalidades = nacionalidades;
+
+            var Provincias = new List<SelectListItem>();
+            Provincias = db.Provincia.Select(c => new SelectListItem()
+
+            {
+                Text = c.Nombre,
+                Value = c.ProvinciaId.ToString()
+
+            }).ToList();
+
+            ViewBag.Provincias = Provincias;
+
+            var Localidades = new List<SelectListItem>();
+            Localidades = db.Localidad.Select(c => new SelectListItem()
+
+            {
+                Text = c.Nombre,
+                Value = c.LocalidadId.ToString()
+
+            }).ToList();
+
+            ViewBag.Localidades = Localidades;
+
             return View();
         }
 
@@ -25,33 +112,110 @@ namespace Preinscripcion.Controllers
             return View();
         }
 
+
         // GET: Alumno/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Alumno/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
 
-        // POST: Alumno/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
+        //// GET: Alumno/Create
+        //public ActionResult Create()
+        //{
+        //    //var TiposDoc = new List<SelectListItem>();
+        //    //TiposDoc = db.TipoDoc.Select(c => new SelectListItem()
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //    //{
+        //    //    Text = c.Descripcion,
+        //    //    Value = c.TipoDocId.ToString()
+
+        //    //}).ToList();
+
+        //    //ViewBag.TipoDocs = TiposDoc;
+
+        //    //var EstadosC = new List<SelectListItem>();
+        //    //EstadosC = db.EstadoCivil.Select(c => new SelectListItem()
+
+        //    //{
+        //    //    Text = c.Descripcion,
+        //    //    Value = c.EstadoCivilId.ToString()
+
+        //    //}).ToList();
+
+        //    //ViewBag.EstadosCivil = EstadosC;
+
+        //    //var Carreras = new List<SelectListItem>();
+        //    //Carreras = db.Carrera.Select(c => new SelectListItem()
+
+        //    //{
+        //    //    Text = c.Nombre,
+        //    //    Value = c.CarreraId.ToString()
+
+        //    //}).ToList();
+
+        //    //ViewBag.Carreras = Carreras;
+
+        //    //var nacionalidades = new List<SelectListItem>();
+        //    //nacionalidades = db.Nacionalidad.Select(c => new SelectListItem()
+
+        //    //{
+        //    //    Text = c.Descripcion,
+        //    //    Value = c.NacionalidadId.ToString()
+
+        //    //}).ToList();
+
+        //    //ViewBag.nacionalidades = nacionalidades;
+
+        //    //var Provincias = new List<SelectListItem>();
+        //    //Provincias = db.Provincia.Select(c => new SelectListItem()
+
+        //    //{
+        //    //    Text = c.Nombre,
+        //    //    Value = c.ProvinciaId.ToString()
+
+        //    //}).ToList();
+
+        //    //ViewBag.Provincias = Provincias;
+
+        //    //var Localidades = new List<SelectListItem>();
+        //    //Localidades = db.Localidad.Select(c => new SelectListItem()
+
+        //    //{
+        //    //    Text = c.Nombre,
+        //    //    Value = c.LocalidadId.ToString()
+
+        //    //}).ToList();
+
+        //    //ViewBag.Localidades = Localidades;
+
+        //    return View();
+        //}
+
+        //// POST: Alumno/Create
+
+        ////[HttpPost]
+        ////public ActionResult Create(FormCollection collection)
+        ////{
+        ////    try
+        ////    {
+        ////        // TODO: Add insert logic here
+
+        ////        return RedirectToAction("Index");
+        ////    }
+        ////    catch
+        ////    {
+        ////        return View();
+        ////    }
+        ////}
+
+        //// POST: Alumno/Create
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create()
+        //{
+        //   return View();
+        //}
 
         // GET: Alumno/Edit/5
         public ActionResult Edit(int id)

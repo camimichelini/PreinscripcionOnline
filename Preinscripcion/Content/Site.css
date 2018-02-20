@@ -176,6 +176,19 @@ input {
         max-width: 81.5em;
     }
 
+    .labelform{
+        width: 20em;
+    }
+    
+    .inputsizq {
+        width: 24em;
+        float: right;
+    }
+
+    .inputsder {
+
+    }
+
     .inputform {
         max-width:30em;
     }

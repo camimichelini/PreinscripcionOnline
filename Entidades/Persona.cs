@@ -14,13 +14,12 @@ namespace Preinscripcion.Entidades
     {
         [Key]
         public int PersonaId { get; set; }
-        [Required(ErrorMessage = "Debe ingresar un nombre")]
         public string Nombre { get; set; }
-        [Required(ErrorMessage = "Debe ingresar un apellido")]
+   
         public string Apellido { get; set; }
-        [Required(ErrorMessage = "Debe ingresar un Numero de Documento")]
+    
         public int NroDoc { get; set; }
-        [Required(ErrorMessage = "Debe Seleccionar un Tipo de Documento")]
+
         public virtual TipoDoc TipoDoc { get; set; }
                 
     }
