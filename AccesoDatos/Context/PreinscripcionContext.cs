@@ -27,7 +27,7 @@ namespace Preinscripcion.AccesoDatos.Context
         public virtual DbSet<Sexo> Sexo { get; set; }
         public virtual DbSet<TipoDoc> TipoDoc { get; set; }
         public virtual DbSet<Turno> Turno { get; set; }
-
+        public virtual DbSet<Nacionalidad> Nacionalidad { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Apunte>().HasKey(obj => new { obj.Id, obj.Nr });

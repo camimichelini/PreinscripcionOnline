@@ -104,6 +104,17 @@ namespace Preinscripcion.Controllers
 
             ViewBag.Localidades = Localidades;
 
+            var Sexos = new List<SelectListItem>();
+            Sexos = db.Sexo.Select(c => new SelectListItem()
+
+            {
+                Text = c.Descripcion,
+                Value = c.SexoId.ToString()
+
+            }).ToList();
+
+            ViewBag.Sexos = Sexos;
+
             return View();
         }
 
