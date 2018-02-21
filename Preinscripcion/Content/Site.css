@@ -175,6 +175,7 @@ input {
 
     .inputlargo {
         max-width: 81.5em;
+        margin-left: 1.5em;
     }
 
     .labelform{
@@ -199,7 +200,20 @@ input {
     .textolabel{
         margin-bottom: 1em;
     }
+
+    .textolargo{
+        margin-bottom: 0.5em;
+    }
     
+    .selectfile{
+        margin-top: 0.7em;
+        margin-bottom: 0.5em;
+    }
+
+    .opciones{
+        padding-bottom:2.5em;
+    }
+
     .inputsizq {
         width: 20em;
         float: right;
