@@ -169,7 +169,8 @@ input {
     }
 
     .formlargo {
-        padding-left: 6em;
+        padding-left: 3em;
+        margin-bottom: 0;
     }
 
     .inputlargo {
@@ -179,18 +180,39 @@ input {
     .labelform{
         width: 20em;
     }
+
+    .form-group{
+        margin-bottom: 0em;
+    }
+    
+    .radio-inline{
+        margin-bottom: 1em;
+    }
+
+    .textoform {
+        font-size: 1.2em;
+        padding-left: 0;
+        padding-top: 0;
+        padding-bottom: 3em;
+    }
+
+    .textolabel{
+        margin-bottom: 1em;
+    }
     
     .inputsizq {
-        width: 24em;
+        width: 20em;
         float: right;
     }
 
     .inputsder {
-
+        width: 20em;
+        float: right;
     }
 
     .inputform {
-        max-width:30em;
+        max-width: 30em;
+        width: 15em;
     }
 
     .centrado {
