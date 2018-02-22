@@ -1,10 +1,4 @@
-﻿@model Preinscripcion.Entidades.TipoDoc
-@*@model Preinscripcion.Entidades.Carrera 
-@model Preinscripcion.Entidades.Sexo
-@model Preinscripcion.Entidades.Provincia
-@model Preinscripcion.Entidades.Localidad
-@model Preinscripcion.Entidades.EstadoCivil*@
-
+﻿@model Preinscripcion.Models.Modelo
 
 
 @{
@@ -13,7 +7,7 @@
 
 <h3 class="titulo2">Completá el formulario</h3> </br>
 
-<h4 class="titulo2">Datos personales</h4> </br>
+<h4 class="titulo2">Datos personales</h4> <br>
 
 @using (Html.BeginForm())
 {
@@ -38,34 +32,24 @@
                                    <select class="form-control inputform" required id="TipoDoc" value=@Html.DropDownList("TipoDocs")> </select>
                             </div>*@
 
-
-@*NUEVO SELECT----------Tipo de Documento---*@
-                        <div class="col-md-10">
-                                @Html.DropDownList("Descripcion", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-                        </div>
+                        <div class="textoform">
+                            @Html.DropDownList("TipoDoc", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TipoDoc, "", new { @class = "text-danger" })
+                        </div><br>
 
                         <div class="textoform">
                             <input class="form-control inputform" type="date" placeholder=" " required>
                         </div>
-                        <div class="textoform">
-                            <select class="form-control inputform" required id="Provincia" value=@Html.DropDownList("Provincias")></select>
-                        </div>
-                        <div class="textoform">
-                            <select class="form-control inputform" required id="Sexo" value=@Html.DropDownList("Sexos")></select>
-                        </div>
 
-@*NUEVO SELECT----------Provincia---*@ 
-                        @*<div class="col-md-10"> 
-                                @Html.DropDownList("Nombre", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-                        </div>*@
+                        <div class="textoform">
+                            @Html.DropDownList("Provincia", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Provincia, "", new { @class = "text-danger" })
+                        </div><br>
 
-@*NUEVO SELECT----------Sexo---*@
-                        @*<div class="col-md-10">
-                                @Html.DropDownList("Descripcion", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-                        </div>*@
+                        <div class="textoform">
+                            @Html.DropDownList("Sexo", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+                        </div>
 
                     </div>
                 </div>
@@ -86,33 +70,22 @@
                         </div>
                         <div class="textoform">
                             <input class="form-control inputform" type="text" placeholder=" " required>
-                        </div>
+                        </div><br>
+
                         <div class="textoform">
-                            <select class="form-control inputform" required id="Nacionalidad" value=@Html.DropDownList("Nacionalidades")> </select>
-                        </div>
-                        <div class="textoform">
-                            <select class="form-control inputform" required id="Localidades" value=@Html.DropDownList("Localidades")> </select>
-                        </div>
-                        <div class="textoform">
-                            <select class="form-control inputform" required id="EstadoCivil" value=@Html.DropDownList("EstadosCivil")> </select>
+                            @Html.DropDownList("Nacionalidad", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Nacionalidad, "", new { @class = "text-danger" })
                         </div>
 
-@*NUEVO SELECT----------Nacionalidad---*@
-                        @*<div class="col-md-10">
-                                @Html.DropDownList("Descripcion", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-                        </div>*@
+                        <div class="textoform">
+                            @Html.DropDownList("Localidad", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Localidad, "", new { @class = "text-danger" })
+                        </div><br>
 
-@*NUEVO SELECT----------Localidad---*@
-                        @*<div class="col-md-10">
-                                @Html.DropDownList("Nombre", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-                        </div>*@
-@*NUEVO SELECT----------EstadoCivil---*@
-                        @*<div class="col-md-10">
-                                @Html.DropDownList("Descripcion", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-                        </div>*@
+                        <div class="textoform">
+                            @Html.DropDownList("EstadoCivil", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
             </div>
@@ -141,17 +114,14 @@
                     </div>
 
                     <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
+
                         <div class="textoform">
-                            <select class="form-control inputform" required id="Provincias" value=@Html.DropDownList("Provincias")> </select>
-                        </div>
-@*NUEVO SELECT----------Pcia---*@
-                        @*<div class="col-md-10">
-                                @Html.DropDownList("Nombre", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-                        </div>*@
+                            @Html.DropDownList("Provincia", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Provincia, "", new { @class = "text-danger" })
+                        </div> 
                         <div class="textoform">
                             <input class="form-control inputform" type="number" placeholder=" " required>
-                        </div>
+                        </div><br>
                         <div class="textoform">
                             <input class="form-control inputform" type="email" placeholder=" " required>
                         </div>
@@ -170,17 +140,15 @@
                     </div>
 
                     <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsder">
+ 
                         <div class="textoform">
-                            <select class="form-control inputform" required id="Localidades" value=@Html.DropDownList("Localidades")> </select>
-                        </div>
-@*NUEVO SELECT----------Localidad---*@
-                        @*<div class="col-md-10">
-                                @Html.DropDownList("Nombre", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-                        </div>*@
+                            @Html.DropDownList("Localidad", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Localidad, "", new { @class = "text-danger" })
+                        </div> 
+
                         <div class="textoform">
                             <input class="form-control inputform" type="text" placeholder=" " required>
-                        </div>
+                        </div><br>
                         <div class="textoform opciones">
                             <label class="radio-inline"><input type="radio" name="optradio" value="si" required>S</label>
                             <label class="radio-inline"><input type="radio" name="optradio" value="no">N</label>
@@ -217,14 +185,12 @@
                         <div class="textoform textolabel"> <label for="Certificado">Certificado:</label> </div>
                     </div>
                     <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
+ 
                         <div class="textoform">
-                            <select class="form-control inputform" required id="Carreras" value=@Html.DropDownList("Carreras")> </select>
-                        </div>
-@*NUEVO SELECT----------Carrera---*@
-                        @*<div class="col-md-10">
-                                @Html.DropDownList("Nombre", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-                        </div>*@
+                            @Html.DropDownList("Carrera", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Carrera, "", new { @class = "text-danger" })
+                        </div><br>
+
                         <div class="textoform">
                             <input class="inputform form-control" type="text" placeholder=" " required>
                         </div>

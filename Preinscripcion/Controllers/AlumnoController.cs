@@ -52,82 +52,14 @@ namespace Preinscripcion.Controllers
 
             //ViewBag.TipoDocs = TiposDOC;
 
-            var EstadosC = new List<SelectListItem>();
-            EstadosC = db.EstadoCivil.Select(c => new SelectListItem()
-
-            {
-                Text = c.Descripcion,
-                Value = c.EstadoCivilId.ToString()
-
-            }).ToList();
-
-            ViewBag.EstadosCivil = EstadosC;
-
-            var Carreras = new List<SelectListItem>();
-            Carreras = db.Carrera.Select(c => new SelectListItem()
-
-            {
-                Text = c.Nombre,
-                Value = c.CarreraId.ToString()
-
-            }).ToList();
-
-            ViewBag.Carreras = Carreras;
-
-            var nacionalidades = new List<SelectListItem>();
-            nacionalidades = db.Nacionalidad.Select(c => new SelectListItem()
-
-            {
-                Text = c.Descripcion,
-                Value = c.NacionalidadId.ToString()
-
-            }).ToList();
-
-            ViewBag.nacionalidades = nacionalidades;
-
-            var Provincias = new List<SelectListItem>();
-            Provincias = db.Provincia.Select(c => new SelectListItem()
-
-            {
-                Text = c.Nombre,
-                Value = c.ProvinciaId.ToString()
-
-            }).ToList();
-
-            ViewBag.Provincias = Provincias;
-
-            var Localidades = new List<SelectListItem>();
-            Localidades = db.Localidad.Select(c => new SelectListItem()
-
-            {
-                Text = c.Nombre,
-                Value = c.LocalidadId.ToString()
-
-            }).ToList();
-
-            ViewBag.Localidades = Localidades;
-
-            var Sexos = new List<SelectListItem>();
-            Sexos = db.Sexo.Select(c => new SelectListItem()
-
-            {
-                Text = c.Descripcion,
-                Value = c.SexoId.ToString()
-
-            }).ToList();
-
-            ViewBag.Sexos = Sexos;
-
-
             //PARA NUEVOS SELECT
-            ViewBag.Descripcion = new SelectList(db.TipoDoc, "Descripcion", "Descripcion");
-            //ViewBag.Descripcion = new SelectList(db.Nacionalidad, "Descripcion", "Descripcion");
-            //ViewBag.Nombre = new SelectList(db.Provincia, "Nombre", "Nombre");
-            //ViewBag.Nombre = new SelectList(db.Localidad, "Nombre", "Nombre");
-            //ViewBag.Descripcion = new SelectList(db.EstadoCivil, "Descripcion", "Descripcion");
-            //ViewBag.Descripcion = new SelectList(db.Sexo, "Descripcion", "Descripcion");
-            //ViewBag.Nombre = new SelectList(db.Carrera, "Nombre", "Nombre");
-
+            ViewBag.TipoDoc = new SelectList(db.TipoDoc, "Descripcion", "Descripcion");
+            ViewBag.Nacionalidad = new SelectList(db.Nacionalidad, "Descripcion", "Descripcion");
+            ViewBag.Provincia = new SelectList(db.Provincia, "Nombre", "Nombre");
+            ViewBag.Localidad = new SelectList(db.Localidad, "Nombre", "Nombre");
+            ViewBag.EstadoCivil = new SelectList(db.EstadoCivil, "Descripcion", "Descripcion");
+            ViewBag.Sexo = new SelectList(db.Sexo, "Descripcion", "Descripcion");
+            ViewBag.Carrera = new SelectList(db.Carrera, "Nombre", "Nombre");
 
             return View();
         }
