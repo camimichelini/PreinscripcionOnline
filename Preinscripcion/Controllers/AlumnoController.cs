@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using System.Net;
+
 
 namespace Preinscripcion.Controllers
 {
@@ -38,16 +41,16 @@ namespace Preinscripcion.Controllers
         public ActionResult Formulario()
         {
 
-            var TiposDOC = new List<SelectListItem>();
-            TiposDOC = db.TipoDoc.Select(c => new SelectListItem()
+            //var TiposDOC = new List<SelectListItem>();
+            //TiposDOC = db.TipoDoc.Select(c => new SelectListItem()
 
-            {
-                Text = c.Descripcion,
-                Value = c.TipoDocId.ToString()
+            //{
+            //    Text = c.Descripcion,
+            //    Value = c.TipoDocId.ToString()
 
-            }).ToList();
+            //}).ToList();
 
-            ViewBag.TipoDocs = TiposDOC;
+            //ViewBag.TipoDocs = TiposDOC;
 
             var EstadosC = new List<SelectListItem>();
             EstadosC = db.EstadoCivil.Select(c => new SelectListItem()
@@ -115,8 +118,21 @@ namespace Preinscripcion.Controllers
 
             ViewBag.Sexos = Sexos;
 
+
+            //PARA NUEVOS SELECT
+            ViewBag.Descripcion = new SelectList(db.TipoDoc, "Descripcion", "Descripcion");
+            //ViewBag.Descripcion = new SelectList(db.Nacionalidad, "Descripcion", "Descripcion");
+            //ViewBag.Nombre = new SelectList(db.Provincia, "Nombre", "Nombre");
+            //ViewBag.Nombre = new SelectList(db.Localidad, "Nombre", "Nombre");
+            //ViewBag.Descripcion = new SelectList(db.EstadoCivil, "Descripcion", "Descripcion");
+            //ViewBag.Descripcion = new SelectList(db.Sexo, "Descripcion", "Descripcion");
+            //ViewBag.Nombre = new SelectList(db.Carrera, "Nombre", "Nombre");
+
+
             return View();
         }
+
+       
 
         public ActionResult VerificarDatosAdmin()
         {
@@ -130,7 +146,10 @@ namespace Preinscripcion.Controllers
             return View();
         }
 
-
+        public ActionResult Create()
+        {
+            return View();
+        }
         //// GET: Alumno/Create
         //public ActionResult Create()
         //{
