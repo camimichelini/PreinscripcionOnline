@@ -31,6 +31,7 @@ namespace Preinscripcion.Entidades
         public string FotoCarnet { get; set; }
 
         public string FotocopiaDoc { get; set; }
+        public string NomyApePMT { get; set; }
 
         public string CertificadoTrabajo { get; set; }
 
@@ -52,5 +53,7 @@ namespace Preinscripcion.Entidades
 
         public virtual Localidad LugarDomicilio { get; set; }
 
-    }
+        public virtual Carrera Carrera { get; set; }
+
+     }
 }

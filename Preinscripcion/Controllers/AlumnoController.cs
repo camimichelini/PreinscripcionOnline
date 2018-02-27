@@ -9,12 +9,18 @@ using System.Data.Entity;
 using System.Net;
 
 
+
 namespace Preinscripcion.Controllers
 {
     public class AlumnoController : Controller
     {
         // GET: Alumno
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult PruebaForm()
         {
             return View();
         }
@@ -40,18 +46,6 @@ namespace Preinscripcion.Controllers
         private PreinscripcionContext db = new PreinscripcionContext();
         public ActionResult Formulario()
         {
-
-            //var TiposDOC = new List<SelectListItem>();
-            //TiposDOC = db.TipoDoc.Select(c => new SelectListItem()
-
-            //{
-            //    Text = c.Descripcion,
-            //    Value = c.TipoDocId.ToString()
-
-            //}).ToList();
-
-            //ViewBag.TipoDocs = TiposDOC;
-
             //PARA NUEVOS SELECT
             ViewBag.TipoDoc = new SelectList(db.TipoDoc, "Descripcion", "Descripcion");
             ViewBag.Nacionalidad = new SelectList(db.Nacionalidad, "Descripcion", "Descripcion");
@@ -64,7 +58,32 @@ namespace Preinscripcion.Controllers
             return View();
         }
 
-       
+        // [Bind(Include = "Nombre,Apellido,NroDoc,FechaNAcimiento,Enmancipacion,FotoCarnet,FotocopiaDoc,CertificadoTrabajo,NOmbreColegio,TituloColegio,TipoAnalitico,FotoAnalitico,Domicilio,Telefono,Celular,Mail,Sexo,TipoDoc,Nacionalidad,Provincia,Localidad,Carrera,EstadoCivil")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Formulario([Bind(Include = "PersonaId,Nombre,Apellido,TipoDocId,TipoDoc,NroDoc,FechaNacimiento,Domicilio,Telefono,Celular,Mail,Enmancipacion,NomyApePMT,NombreColegio,EstadoCivilId,EstadoCivil,NacionalidadId,Nacionalidad,LugardeNacimiento.LocalidadId,LugarNacimiento,LugarDomicilio.LocalidadId,LugarDomicilio,CarreraId,Carrera")]Alumno alumno)
+        {
+            //string message = string.Empty;
+            //var alumnos = db.Alumno
+            //       .Where(b => b.NroDoc == alumno.NroDoc)
+            //       .FirstOrDefault();
+
+            //if (alumnoss != null)
+            //{
+                if (ModelState.IsValid)
+            {
+                db.Persona.Add(alumno);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(alumno);
+            }
+            
+        }
+
+
 
         public ActionResult VerificarDatosAdmin()
         {
