@@ -183,18 +183,16 @@ namespace Preinscripcion.Controllers
                 ViewData["Celular"] = alum.Celular;
                 ViewData["NombreColegio"] = alum.NombreColegio;
                 ViewData["TituloColegio"] = alum.TituloColegio;
-                ViewData["Legajo"] = alum.Legajo;
+                //ViewData["NYA"] = alum.NYA; NOMBRE Y APELLIDO PADRE/MADRE.. AGREGAR A CLASE
+
 
                 //ViewData["Nacionalidad"] = alum.Nacionalidad;
-                //ViewData["PciaNac"] = alum.PciaNacimiento;
-                //ViewData["PciaDom"] = alum.PciaDomicilio;
                 //ViewData["TipoDoc"] = alum.TipoDoc;
                 //ViewData["LugarDom"] = alum.LugarDomicilio;
                 //ViewData["LugarNac"] = alum.LugarNacimiento;
                 //ViewData["EstadoCivil"] = alum.EstadoCivil;
                 //ViewData["Sexo"] = alum.Sexo;
                 //ViewData["Carrera"] = alum.Carrera;
-                //ViewData["TipoAnALI"] = alum.Carrera;
                 //ViewData["Emancipacion"] = alum.Emancipacion;
 
                 //ViewData["FotoCarnet"] = alum.FotoCarnet;
