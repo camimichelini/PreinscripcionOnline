@@ -3,17 +3,14 @@
     ViewBag.Title = "Fin Inscripcion";
 }
 
-@Html.ActionLink("Cerrar Sesión", "Logout", "Administrativo", null, new { @class = " botonform" })<br />
-<div class="texto">
-    <p>El alumno XXXXXXX ha sido guardado en la base de datos del Sysacad en forma satisfactoria</p>
-    
-    <p> Su legajo es : XXXXXXXX </p>
-    <p> En breve se enviará un mail al alumno con su número de legajo y contraseña para ingresar al sistema.</p>
-    <br />
-    @Html.ActionLink("Continuar", "BuscarDoc", "Administrativo", null, new { @class = "btn btn-primary btn-lg active botonform" })
-</div>
-
-
+    @Html.ActionLink("Cerrar Sesión", "Logout", "Administrativo", null, new { @class = " botonform" })<br />
+    <div class="texto">
+        <p>El alumno  @ViewData["Nombre"]  @ViewData["Apellido"] ha sido guardado en la base de datos del Sysacad en forma satisfactoria</p>
+        <p> Su legajo es :  @ViewData["Legajo"] </p>
+        <p> En breve se enviará un mail al alumno con su número de legajo y contraseña para ingresar al sistema.</p>
+        <br />
+        @Html.ActionLink("Continuar", "BuscarDoc", "Administrativo", null, new { @class = "btn btn-primary btn-lg active botonform" })
+    </div>
 <br />
 
 

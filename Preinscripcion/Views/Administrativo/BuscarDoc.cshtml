@@ -7,13 +7,13 @@
 <h3 class="titulo2">Buscar alumno</h3>
 
 
-@using (Html.BeginForm("BuscarDocu", "Administrativo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("VerificarDatosAdmin", "Administrativo", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <fieldset pull-center>
         <div class="centrado textooscuro">
             <div class="form-group">
-                Documento: <input type="number" name="NroDoc" id="NroDoc" required><br><br>
-            </div>       
+                Documento: <input type="number" name="NroDoc" id="NroDoc" required ><br><br>
+            </div>
             <button class="btn btn-primary btn-lg active botonform">Ingresar</button>
         </div>
     </fieldset>

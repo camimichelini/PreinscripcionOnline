@@ -13,6 +13,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Preinscripcion.Controllers
 {
+
     public class AdministrativoController : Controller
     {
         private PreinscripcionContext db = new PreinscripcionContext();
@@ -94,8 +95,14 @@ namespace Preinscripcion.Controllers
             }
         }
 
-        public ActionResult FinInscripcion()
+        public ActionResult FinInscripcion(Alumno alum)
         {
+            System.Random randomGenerate = new System.Random();
+            System.String Legajo = "";
+            Legajo = System.Convert.ToString(randomGenerate.Next(90000000, 99999999)).PadLeft(4, '0');
+            ViewData["Nombre"] = alum.Nombre; 
+            ViewData["Apellido"] = alum.Apellido;
+            ViewData["Legajo"] = Legajo;
             return View();
         }
 
@@ -136,18 +143,67 @@ namespace Preinscripcion.Controllers
         {
             Session.Clear();
             //or Session["LoginMapper"]  = null;
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Administrativo");
         }
-        public ActionResult BuscarDocu(Alumno alu)
+
+
+        public ActionResult VerificarDatosAdmin(Alumno alu)
         {
             string message = string.Empty;
-            var alum = db.Persona
+            var p = db.Persona
                    .Where(b => b.NroDoc == alu.NroDoc)
                    .FirstOrDefault();
 
-            if (alum != null)
+            if (p != null)
             {
-                    return RedirectToAction("VerificarDatosAdmin", "Alumno", new { alu = alum });
+
+                var alum = db.Alumno
+                       .Where(b => b.PersonaId == p.PersonaId)
+                       .FirstOrDefault();
+
+                ViewBag.TipoDoc = new SelectList(db.TipoDoc, "Descripcion", "Descripcion");
+                ViewBag.Nacionalidad = new SelectList(db.Nacionalidad, "Descripcion", "Descripcion");
+                ViewBag.Provincia = new SelectList(db.Provincia, "Nombre", "Nombre");
+                ViewBag.Localidad = new SelectList(db.Localidad, "Nombre", "Nombre");
+                ViewBag.EstadoCivil = new SelectList(db.EstadoCivil, "Descripcion", "Descripcion");
+                ViewBag.Sexo = new SelectList(db.Sexo, "Descripcion", "Descripcion");
+                ViewBag.Carrera = new SelectList(db.Carrera, "Nombre", "Nombre");
+
+                String fecha;
+                fecha = alum.FechaNacimiento.ToShortDateString();
+
+
+                ViewData["Nombre"] = alum.Nombre;
+                ViewData["Apellido"] = alum.Apellido;
+                ViewData["FechaNac"] = fecha; //NO ANDA
+                ViewData["NroDoc"] = alum.NroDoc;
+                ViewData["Domicilio"] = alum.Domicilio;
+                ViewData["Tel"] = alum.Telefono;
+                ViewData["Email"] = alum.Mail;
+                ViewData["Celular"] = alum.Celular;
+                ViewData["NombreColegio"] = alum.NombreColegio;
+                ViewData["TituloColegio"] = alum.TituloColegio;
+                ViewData["Legajo"] = alum.Legajo;
+
+                //ViewData["Nacionalidad"] = alum.Nacionalidad;
+                //ViewData["PciaNac"] = alum.PciaNacimiento;
+                //ViewData["PciaDom"] = alum.PciaDomicilio;
+                //ViewData["TipoDoc"] = alum.TipoDoc;
+                //ViewData["LugarDom"] = alum.LugarDomicilio;
+                //ViewData["LugarNac"] = alum.LugarNacimiento;
+                //ViewData["EstadoCivil"] = alum.EstadoCivil;
+                //ViewData["Sexo"] = alum.Sexo;
+                //ViewData["Carrera"] = alum.Carrera;
+                //ViewData["TipoAnALI"] = alum.Carrera;
+                //ViewData["Emancipacion"] = alum.Emancipacion;
+
+                //ViewData["FotoCarnet"] = alum.FotoCarnet;
+                //ViewData["FotocDoc"] = alum.FotocopiaDoc;
+                //ViewData["FotocAnalitico"] = alum.FotocAnalitico;
+                //ViewData["CertifTrabajo"] = alum.CertificadoTrabajo;
+
+
+                return View();
             }
             else
             {
@@ -155,5 +211,7 @@ namespace Preinscripcion.Controllers
                 return RedirectToAction("BuscarDoc", "Administrativo");
             }
         }
+
+
     }
 }
