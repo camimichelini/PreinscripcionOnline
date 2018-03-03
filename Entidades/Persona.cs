@@ -16,12 +16,10 @@ namespace Preinscripcion.Entidades
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // PK autoincremental (Identity column)
         public Int64 PersonaId { get; set; }
 
-        [Required]
-        [MaxLength(10)]
+
         public string Nombre { get; set; }
 
-        [Required]
-        [MaxLength(10)]
+
         public string Apellido { get; set; }
 
         public int TipoDocId { get; set; }

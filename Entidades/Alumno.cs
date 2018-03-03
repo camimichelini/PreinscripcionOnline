@@ -27,7 +27,7 @@ namespace Preinscripcion.Entidades
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaNacimiento { get; set; }
-        
+
         public int EstadoCivilId { get; set; }
         public virtual EstadoCivil EstadoCivil { get; set; }
         public int NacionalidadId { get; set; }
@@ -46,6 +46,8 @@ namespace Preinscripcion.Entidades
         public virtual Carrera Carrera { get; set; }
 
         public Boolean Emancipacion { get; set; }
+
+        
 
     }
 }
