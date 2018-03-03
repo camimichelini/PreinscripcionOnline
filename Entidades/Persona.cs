@@ -13,14 +13,21 @@ namespace Preinscripcion.Entidades
     public abstract class Persona
     {
         [Key]
-        public int PersonaId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // PK autoincremental (Identity column)
+        public Int64 PersonaId { get; set; }
+
+        [Required]
+        [MaxLength(10)]
         public string Nombre { get; set; }
-   
+
+        [Required]
+        [MaxLength(10)]
         public string Apellido { get; set; }
-    
+
+        public int TipoDocId { get; set; }
+        public virtual TipoDoc TipoDoc { get; set; }
+
         public int NroDoc { get; set; }
 
-        public virtual TipoDoc TipoDoc { get; set; }
-                
     }
 }

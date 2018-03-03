@@ -12,48 +12,38 @@ namespace Preinscripcion.Entidades
     [Table("Alumno")]
     public class Alumno : Persona
     {
+
         [Key]
-        public int AlumnoId { get; set; }
-        public int Legajo { get; set; }
-
-        public DateTime FechaNacimiento { get; set; }
-
-        public string Domicilio { get; set;  }
-        
+        public Int32 Legajo { get; set; }
         public int Telefono { get; set; }
-
         public int Celular { get; set; }
-
         public string Mail { get; set; }
-
-        public Boolean Enmancipacion { get; set; }
-
-        public string FotoCarnet { get; set; }
-
-        public string FotocopiaDoc { get; set; }
+        public string Domicilio { get; set; }
         public string NomyApePMT { get; set; }
-
-        public string CertificadoTrabajo { get; set; }
-
         public string NombreColegio { get; set; }
-
-        public string TituloColegio { get; set; }
-
-        public string TipoAnalitico { get; set; }
-
-        public string FotocAnalitico { get; set; }
-
+        
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime FechaNacimiento { get; set; }
+        
+        public int EstadoCivilId { get; set; }
         public virtual EstadoCivil EstadoCivil { get; set; }
-
+        public int NacionalidadId { get; set; }
         public virtual Nacionalidad Nacionalidad { get; set; }
-
+        public int SexoId { get; set; }
         public virtual Sexo Sexo { get; set; }
-
+        public int Localidad1Id { get; set; }
         public virtual Localidad LugarNacimiento { get; set; }
-
+        public int Localidad2Id { get; set; }
         public virtual Localidad LugarDomicilio { get; set; }
-
+        public int Provincia1Id { get; set; }
+        public virtual Provincia ProvinciaNacimiento { get; set; }
+        public int Provincia2Id { get; set; }
+        public virtual Provincia ProvinciaDomicilio { get; set; }
+        public int CarreraId { get; set; }
         public virtual Carrera Carrera { get; set; }
 
-     }
+        public Boolean Emancipacion { get; set; }
+
+    }
 }
