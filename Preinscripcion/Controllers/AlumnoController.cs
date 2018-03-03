@@ -56,22 +56,38 @@ namespace Preinscripcion.Controllers
 
         // POST: Guardar Alumno en la BD
         [HttpPost]
-        public ActionResult Formulario([Bind(Include = "PersonaId,Nombre,Apellido,TipoDocId,Telefono,Celular,Mail, Domicilio, NomyApePMT, EstadoCivilId, NacionalidadId, Localidad1Id, Localidad2Id, Provincia1Id, Provincia2Id, CarreraId, SexoId, FechaNacimiento, Emancipacion, NombreColegio")] Alumno alumno)
+        public ActionResult Formulario([Bind(Include = "PersonaId,Nombre,Apellido,TipoDocId,NroDoc,Telefono,Celular,Mail, Domicilio, NomyApePMT, EstadoCivilId, NacionalidadId, Localidad1Id, Localidad2Id, Provincia1Id, Provincia2Id, CarreraId, SexoId, FechaNacimiento, Emancipacion, NombreColegio")] Alumno alumno)
         {
-            if (ModelState.IsValid)
-            {
-                using (var ctx = new PreinscripcionContext())
-                {
-                    ctx.Persona.Add(alumno);
-                    ctx.SaveChanges();
-                }
-                return RedirectToAction("Index");
-            }
+            string message = string.Empty;
+            var p = db.Alumno
+                   .Where(b => b.NroDoc == alumno.NroDoc)
+                   .FirstOrDefault();
 
-            return View(new Alumno());
+            if (p == null)
+            {
+
+                if (ModelState.IsValid)
+                {
+                    using (var ctx = new PreinscripcionContext())
+                    {
+                        ctx.Persona.Add(alumno);
+                        ctx.SaveChanges();
+                    }
+                    return RedirectToAction("Turno","Turnera");
+                }
+
+                return View(new Alumno());
+
+            }
+            else
+            {
+                TempData["mensajeerror"] = "Ya te preinscribiste anteriormente";
+                return RedirectToAction("Formulario", "Alumno");
+            }
         }
 
-        // GET: Alumno/Edit/5
+        
+     // GET: Alumno/Edit/5
         public ActionResult Edit(int id)
         {
             return View();

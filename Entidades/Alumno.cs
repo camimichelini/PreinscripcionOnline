@@ -15,13 +15,15 @@ namespace Preinscripcion.Entidades
 
         [Key]
         public Int32 Legajo { get; set; }
+        public int AlumnoId { get; set; }
         public int Telefono { get; set; }
         public int Celular { get; set; }
         public string Mail { get; set; }
         public string Domicilio { get; set; }
         public string NomyApePMT { get; set; }
         public string NombreColegio { get; set; }
-        
+        public string TituloColegio { get; set; }
+
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaNacimiento { get; set; }
