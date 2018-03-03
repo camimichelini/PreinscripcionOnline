@@ -38,8 +38,8 @@ namespace Preinscripcion.Controllers
             return View();
         }
 
-        // GET: Alumno/Create
-        public ActionResult Create()
+        // GET: Alumno/Formulario
+        public ActionResult Formulario()
         {
             ViewBag.TipoDocId = new SelectList(db.TipoDoc, "TipoDocId", "Descripcion");
             ViewBag.NacionalidadId = new SelectList(db.Nacionalidad, "NacionalidadId", "Descripcion");
@@ -56,7 +56,7 @@ namespace Preinscripcion.Controllers
 
         // POST: Guardar Alumno en la BD
         [HttpPost]
-        public ActionResult Create([Bind(Include = "PersonaId,Nombre,Apellido,TipoDocId,Telefono,Celular,Mail, Domicilio, NomyApePMT, EstadoCivilId, NacionalidadId, Localidad1Id, Localidad2Id, Provincia1Id, Provincia2Id, CarreraId, SexoId, FechaNacimiento, Emancipacion, NombreColegio")] Alumno alumno)
+        public ActionResult Formulario([Bind(Include = "PersonaId,Nombre,Apellido,TipoDocId,Telefono,Celular,Mail, Domicilio, NomyApePMT, EstadoCivilId, NacionalidadId, Localidad1Id, Localidad2Id, Provincia1Id, Provincia2Id, CarreraId, SexoId, FechaNacimiento, Emancipacion, NombreColegio")] Alumno alumno)
         {
             if (ModelState.IsValid)
             {
