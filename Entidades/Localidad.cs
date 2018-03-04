@@ -13,8 +13,8 @@ namespace Preinscripcion.Entidades
     {
         [Key]
         public int LocalidadId { get; set; }
+        public int ProvinciaId { get; set; }
         public string Nombre { get; set; }
-        public virtual Provincia Provincia { get; set; }
 
     }
 }

@@ -43,7 +43,7 @@ namespace Preinscripcion.Controllers
         {
             ViewBag.TipoDocId = new SelectList(db.TipoDoc, "TipoDocId", "Descripcion");
             ViewBag.NacionalidadId = new SelectList(db.Nacionalidad, "NacionalidadId", "Descripcion");
-            ViewBag.Provincia1Id = new SelectList(db.Provincia, "ProvinciaId", "Nombre");
+            ViewBag.Provincia1Id = new SelectList(db.Provincia, "ProvinciaId", "Nombre", null);
             ViewBag.Provincia2Id = new SelectList(db.Provincia, "ProvinciaId", "Nombre");
             ViewBag.Localidad1Id = new SelectList(db.Localidad, "LocalidadId", "Nombre");
             ViewBag.Localidad2Id = new SelectList(db.Localidad, "LocalidadId", "Nombre");
@@ -52,6 +52,44 @@ namespace Preinscripcion.Controllers
             ViewBag.CarreraId = new SelectList(db.Carrera, "CarreraId", "Nombre");
 
             return View();
+        }
+
+        public ActionResult BuscarLocNac(int? id)
+        {
+            var types = BuscarLocNacList(id);
+            return Json(types, JsonRequestBehavior.AllowGet);
+        }
+         private List<SelectListItem> BuscarLocNacList(int? idType)
+        {
+            var stypes = db.Localidad.Where(x => x.ProvinciaId == idType);
+            var resp = stypes.Select(x => new SelectListItem()
+            {
+                Value = x.LocalidadId.ToString(),
+                Text = x.Nombre
+            }).ToList();
+
+            resp.Insert(0, new SelectListItem() { Value = "", Text = "Elija una opción" });
+
+            return resp;
+        }
+
+        public ActionResult BuscarLocDom(int? id)
+        {
+            var types = BuscarLocDomList(id);
+            return Json(types, JsonRequestBehavior.AllowGet);
+        }
+        private List<SelectListItem> BuscarLocDomList(int? idType)
+        {
+            var stypes = db.Localidad.Where(x => x.ProvinciaId == idType);
+            var resp = stypes.Select(x => new SelectListItem()
+            {
+                Value = x.LocalidadId.ToString(),
+                Text = x.Nombre
+            }).ToList();
+
+            resp.Insert(0, new SelectListItem() { Value = "", Text = "Elija una opción" });
+
+            return resp;
         }
 
         // POST: Guardar Alumno en la BD
