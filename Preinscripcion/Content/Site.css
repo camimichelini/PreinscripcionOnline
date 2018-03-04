@@ -174,7 +174,8 @@ input {
     }
 
     .inputlargo {
-        max-width: 81.5em;
+        width: 83.2em;
+        max-width: 58em;
         /*margin-left: 1.5em;*/
     }
 
