@@ -24,8 +24,8 @@
                  </div>
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
                     <div class="textoform">
-                        <input id="nombre" name="Nombre" class="form-control inputform" type="text" placeholder=" " required>
-                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        <input id="Nombre" name="Nombre" class="form-control inputform" type="text" placeholder=" " required>
+                        @*@Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })*@
                     </div>
                     <div class="textoform">
                         @Html.DropDownList("TipoDocId", null, htmlAttributes: new { @class = "form-control inputform" })
@@ -56,12 +56,10 @@
                 </div>
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
                     <div class="textoform">
-                        <input id="nombre" name="Apellido" class="form-control inputform" type="text" placeholder=" " required>
-                        @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+                        <input id="Apellido" name="Apellido" class="form-control inputform" type="text" placeholder=" " required>
                     </div>
                     <div class="textoform">
-                        <input id="nombre" name="NroDoc" class="form-control inputform" type="number" placeholder=" " required>
-                        @Html.ValidationMessageFor(model => model.NroDoc, "", new { @class = "text-danger" })
+                        <input id="NroDoc" name="NroDoc" class="form-control inputform" type="number" placeholder=" " required>
                     </div> <br>
                     <div class="textoform">
                         @Html.DropDownList("NacionalidadId", null, htmlAttributes: new { @class = "form-control inputform" })
@@ -86,8 +84,7 @@
                 <label for="Domicilio">Domicilio*:</label>
             </div>
             <div class="col-xs-8 col-md-8 cold-sm-8 textoform">
-                <input id="nombre" name="Domicilio" class="form-control inputlargo" type="text" placeholder=" " required>
-                @Html.ValidationMessageFor(model => model.Domicilio, "", new { @class = "text-danger" })
+                <input id="Domicilio" name="Domicilio" class="form-control inputlargo" type="text" placeholder=" " required>
             </div>
         </div>
     </div>
@@ -108,12 +105,10 @@
                         @Html.ValidationMessageFor(model => model.Provincia2Id, "", new { @class = "text-danger" })
                     </div>
                     <div class="textoform">
-                        <input id="nombre" name="Telefono" class="form-control inputform" type="number" placeholder=" " required>
-                        @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+                        <input id="Telefono" name="Telefono" class="form-control inputform" type="number" placeholder=" " required>
                     </div> <br>
                     <div class="textoform">
-                        <input id="nombre" name="Mail" class="form-control inputform" type="email" placeholder=" " required>
-                        @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+                        <input id="Mail" name="Mail" class="form-control inputform" type="email" placeholder=" " required>
                     </div>
                     <div class="textoform selectfile">
                         <input type="file" id="FotoCarnet" name="FotoCarnet">
@@ -135,13 +130,14 @@
                         @Html.ValidationMessageFor(model => model.NacionalidadId, "", new { @class = "text-danger" })
                     </div>
                     <div class="textoform">
-                        <input id="nombre" name="Celular" class="form-control inputform" type="number" placeholder=" " required>
-                        @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger inputform" })
+                        <input id="Celular" name="Celular" class="form-control inputform" type="number" placeholder=" " required>
                     </div> <br>
-                    <div class="textoform opciones">
-                        @Html.RadioButtonFor(model => model.Emancipacion, "true") Si
-                        @Html.RadioButtonFor(model => model.Emancipacion, "false") No
-                    </div> <br>
+                           <div class="textoform opciones">
+                               @*@Html.RadioButtonFor(model => model.Emancipacion, true) Si
+                               @Html.RadioButtonFor(model => model.Emancipacion, false) No*@
+                               <label class="radio-inline"><input type="radio" name="Emancipacion" value="si" required> SI </label>
+                               <label class="radio-inline"><input type="radio" name="Emancipacion" value="no"> NO </label>
+                           </div> <br>
                     <div class="textoform">
                         <input type="file" id="FotocopiaDoc" name="FotocopiaDoc">
                     </div>
@@ -156,8 +152,7 @@
                 <label for="NomyApePMT">Nombre y Apellido de Madre, Padre o Tutor*:</label>
             </div>
             <div class="col-xs-8 col-md-8 cold-sm-8 textoform">
-                <input id="nombre" name="NomyApePMT" class="form-control inputlargo" type="text" placeholder=" " required>
-                @Html.ValidationMessageFor(model => model.NomyApePMT, "", new { @class = "text-danger" })
+                <input id="NomyApePMT" name="NomyApePMT" class="form-control inputlargo" type="text" placeholder=" " required>
             </div>
         </div>
     </div>
@@ -181,12 +176,10 @@
                         @Html.ValidationMessageFor(model => model.CarreraId, "", new { @class = "text-danger" })
                     </div>
                     <div class="textoform">
-                        <input id="nombre" name="NombreColegio" class="form-control inputform" type="text" placeholder=" " required>
-                        @Html.ValidationMessageFor(model => model.NombreColegio, "", new { @class = "text-danger" })
+                        <input id="NombreColegio" name="NombreColegio" class="form-control inputform" type="text" placeholder=" " required>
                     </div> <br>
                     <div class="textoform">
-                        <input id="nombre" name="TituloColegio" class="form-control inputform" type="text" placeholder=" " required>
-                        @Html.ValidationMessageFor(model => model.TituloColegio, "", new { @class = "text-danger" })
+                        <input id="TituloColegio" name="TituloColegio" class="form-control inputform" type="text" placeholder=" " required>
                     </div>
 
 
