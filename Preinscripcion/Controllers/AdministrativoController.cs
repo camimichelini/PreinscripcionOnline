@@ -105,7 +105,7 @@ namespace Preinscripcion.Controllers
              .Max();
 
 
-            if (legajo <= 90000000)
+            if (legajo < 90000000)
             {
                 alumno.Legajo = 90000000;
             }
