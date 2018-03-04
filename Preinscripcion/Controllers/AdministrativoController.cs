@@ -10,6 +10,7 @@ using System.Web.Helpers;
 using System.Configuration;
 using Preinscripcion.AccesoDatos.Context;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Preinscripcion.Models;
 
 namespace Preinscripcion.Controllers
 {
@@ -95,14 +96,37 @@ namespace Preinscripcion.Controllers
             }
         }
 
-        public ActionResult FinInscripcion(Alumno alum)
+        public ActionResult FinInscripcion([Bind(Include = "PersonaId,Nombre,Apellido,TipoDocId,NroDoc,Telefono,Celular,Mail, Domicilio, NomyApePMT, EstadoCivilId, NacionalidadId, Localidad1Id, Localidad2Id, Provincia1Id, Provincia2Id, CarreraId, SexoId, FechaNacimiento, Emancipacion, NombreColegio, TituloColegio")] Alumno alumno)
         {
-            System.Random randomGenerate = new System.Random();
-            System.String Legajo = "";
-            Legajo = System.Convert.ToString(randomGenerate.Next(90000000, 99999999)).PadLeft(4, '0');
-            ViewData["Nombre"] = alum.Nombre; 
-            ViewData["Apellido"] = alum.Apellido;
-            ViewData["Legajo"] = Legajo;
+
+            System.Int32 legajo =
+             (from alu in db.Alumno
+              select alu.Legajo)
+             .Max();
+
+
+            if (legajo <= 90000000)
+            {
+                alumno.Legajo = 90000000;
+            }
+            else
+            {
+                alumno.Legajo = legajo + 1;
+            }
+
+            if (ModelState.IsValid)
+            {
+                using (var ctx = new PreinscripcionContext())
+                {
+                    
+                    ctx.Persona.Add(alumno);
+                    ctx.SaveChanges();
+                }
+     
+            }
+            ViewData["Nombre"] = alumno.Nombre; 
+            ViewData["Apellido"] = alumno.Apellido;
+            ViewData["Legajo"] = alumno.Legajo;
             return View();
         }
 
@@ -142,7 +166,6 @@ namespace Preinscripcion.Controllers
         public ActionResult Logout()
         {
             Session.Clear();
-            //or Session["LoginMapper"]  = null;
             return RedirectToAction("Index", "Administrativo");
         }
 
@@ -161,44 +184,37 @@ namespace Preinscripcion.Controllers
                        .Where(b => b.PersonaId == p.PersonaId)
                        .FirstOrDefault();
 
-                ViewBag.TipoDoc = new SelectList(db.TipoDoc, "Descripcion", "Descripcion");
-                ViewBag.Nacionalidad = new SelectList(db.Nacionalidad, "Descripcion", "Descripcion");
-                ViewBag.Provincia = new SelectList(db.Provincia, "Nombre", "Nombre");
-                ViewBag.Localidad = new SelectList(db.Localidad, "Nombre", "Nombre");
-                ViewBag.EstadoCivil = new SelectList(db.EstadoCivil, "Descripcion", "Descripcion");
-                ViewBag.Sexo = new SelectList(db.Sexo, "Descripcion", "Descripcion");
-                ViewBag.Carrera = new SelectList(db.Carrera, "Nombre", "Nombre");
+                ViewBag.TipoDocId = new SelectList(db.TipoDoc, "TipoDocId", "Descripcion", alum.TipoDocId);
+                ViewBag.NacionalidadId = new SelectList(db.Nacionalidad, "NacionalidadId", "Descripcion", alum.Nacionalidad);
+                ViewBag.Provincia1Id = new SelectList(db.Provincia, "ProvinciaId", "Nombre",alum.Provincia1Id );
+                ViewBag.Provincia2Id = new SelectList(db.Provincia, "ProvinciaId", "Nombre", alum.Provincia1Id);
+                ViewBag.Localidad1Id = new SelectList(db.Localidad, "LocalidadId", "Nombre", alum.Localidad1Id);
+                ViewBag.Localidad2Id = new SelectList(db.Localidad, "LocalidadId", "Nombre", alum.Localidad2Id);
+                ViewBag.EstadoCivilId = new SelectList(db.EstadoCivil, "EstadoCivilId", "Descripcion", alum.EstadoCivilId);
+                ViewBag.SexoId = new SelectList(db.Sexo, "SexoId", "Descripcion", alum.SexoId);
+                ViewBag.CarreraId = new SelectList(db.Carrera, "CarreraId", "Nombre", alum.CarreraId);
 
                 String fecha;
                 fecha = alum.FechaNacimiento.ToShortDateString();
-
-
+                DateTime fecha2 = alum.FechaNacimiento.Date;
                 ViewData["Nombre"] = alum.Nombre;
                 ViewData["Apellido"] = alum.Apellido;
-                ViewData["FechaNac"] = fecha; //NO ANDA
+                ViewData["FechaNacimiento"] = fecha;
                 ViewData["NroDoc"] = alum.NroDoc;
                 ViewData["Domicilio"] = alum.Domicilio;
-                ViewData["Tel"] = alum.Telefono;
-                ViewData["Email"] = alum.Mail;
+                ViewData["Telefono"] = alum.Telefono;
+                ViewData["Mail"] = alum.Mail;
                 ViewData["Celular"] = alum.Celular;
                 ViewData["NombreColegio"] = alum.NombreColegio;
                 ViewData["TituloColegio"] = alum.TituloColegio;
-                //ViewData["NYA"] = alum.NYA; NOMBRE Y APELLIDO PADRE/MADRE.. AGREGAR A CLASE
+                ViewData["NomyApePMT"] = alum.NomyApePMT;
+                ViewData["Emancipacion"] = alum.Emancipacion;
 
-
-                //ViewData["Nacionalidad"] = alum.Nacionalidad;
-                //ViewData["TipoDoc"] = alum.TipoDoc;
-                //ViewData["LugarDom"] = alum.LugarDomicilio;
-                //ViewData["LugarNac"] = alum.LugarNacimiento;
-                //ViewData["EstadoCivil"] = alum.EstadoCivil;
-                //ViewData["Sexo"] = alum.Sexo;
-                //ViewData["Carrera"] = alum.Carrera;
-                //ViewData["Emancipacion"] = alum.Emancipacion;
-
+                //archivos
                 //ViewData["FotoCarnet"] = alum.FotoCarnet;
-                //ViewData["FotocDoc"] = alum.FotocopiaDoc;
+                //ViewData["FotocDoc"] = alum.FotocDoc;
                 //ViewData["FotocAnalitico"] = alum.FotocAnalitico;
-                //ViewData["CertifTrabajo"] = alum.CertificadoTrabajo;
+                //ViewData["CertifTrabajo"] = alum.CertifTrabajo;
 
 
                 return View();

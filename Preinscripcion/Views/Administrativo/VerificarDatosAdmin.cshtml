@@ -1,4 +1,4 @@
-﻿@model Preinscripcion.Models.Modelo
+﻿@model Preinscripcion.Entidades.Alumno
 
 @{
     ViewBag.Title = "Formulario";
@@ -7,220 +7,222 @@
 @Html.ActionLink("Cerrar Sesión", "Logout", "Administrativo", null, new { @class = "botonform" })<br />
 <h3 class="titulo2">Verificá los datos</h3> </br>
 
-<h4 class="titulo2">Datos personales</h4> <br>
 @using (Html.BeginForm("FinInscripcion", "Administrativo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
 {
-
-
     @Html.AntiForgeryToken()
-    <form method="post">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="row">
-            <div class="col-xs-11 col-md-11 col-sm-11 form-group">
-                <div class="col-xs-6 col-md-6 col-sm-6 form-group">
-                    <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
-                        <div class="textoform textolabel"> <label for="Nombre">Nombre/s*:</label> </div>
-                        <div class="textoform textolabel"> <label for="Tipo de Documento">Tipo de Documento*:</label> </div>
-                        <div class="textoform textolabel"> <label for="Fecha de Nacimiento">Fecha de Nacimiento*:</label> </div>
-                        <div class="textoform textolabel"> <label for="Pcia. de Nacimiento">Pcia.de nacimiento*:</label> </div>
-                        <div class="textoform textolabel"> <label for="Sexo">Sexo:</label> </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <h4 class="titulo2">Datos personales</h4> <br>
+    <div class="row">
+        <div class="col-xs-11 col-md-11 col-sm-11 form-group">
+            <div class="col-xs-6 col-md-6 col-sm-6 form-group">
+                <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
+                    <div class="textoform textolabel"><label for="Nombre">Nombre*:</label></div>
+                    <div class="textoform textolabel"> <label for="Tipo de Documento">Tipo de Documento*:</label> </div>
+                    <div class="textoform textolabel"> <label for="Fecha de Nacimiento">Fecha de Nacimiento*:</label> </div>
+                    <div class="textoform textolabel"> <label for="Pcia. de Nacimiento">Pcia.de nacimiento*:</label> </div>
+                    <div class="textoform textolabel"> <label for="Sexo">Sexo:</label> </div>
+                </div>
+                <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
+                    <div class="textoform">
+                        <input id="nombre" name="Nombre" class="form-control inputform" type="text" placeholder=" " required  value="@ViewData["Nombre"]">
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
-                        <div class="textoform">
-                            <input id="nombre" name="nombre" class="form-control inputform" type="text" placeholder=" " required value="@ViewData["Nombre"]">
-                        </div>
-                        @*<div class="textoform">
-                                   <select class="form-control inputform" required id="TipoDoc" value=@Html.DropDownList("TipoDocs")> </select>
-                            </div>*@
-
-                        <div class="textoform">
-                            @Html.DropDownList("TipoDoc", null, htmlAttributes: new { @class = "form-control inputform" })
-                            @Html.ValidationMessageFor(model => model.TipoDoc, "", new { @class = "text-danger" })
-                        </div><br>
-
-                        <div class="textoform">
-                            <input class="form-control inputform" type="date" placeholder=" " required id="FechaNac" name="FechaNac" value="@ViewData["FechaNac"]">
-                        </div>
-
-                        <div class="textoform">
-                            @Html.DropDownList("Provincia", null, htmlAttributes: new { @class = "form-control inputform" })
-                            @Html.ValidationMessageFor(model => model.Provincia, "", new { @class = "text-danger" })
-                        </div><br>
-
-                        <div class="textoform">
-                            @Html.DropDownList("Sexo", null, htmlAttributes: new { @class = "form-control inputform" })
-                            @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
-                        </div>
-
+                    <div class="textoform">
+                        @Html.DropDownList("TipoDocId", null, htmlAttributes: new { @class = "form-control inputform" })
+                        @Html.ValidationMessageFor(model => model.TipoDocId, "", new { @class = "text-danger" })
+                    </div><br>
+                    <div class="textoform">
+                     <input class="form-control inputform" type="datetime" placeholder=" " required id="FechaNacimiento" name="FechaNacimiento"   value="@ViewData["FechaNacimiento"]" >
+                        @*@Html.EditorFor(model => model.FechaNacimiento, new { @type = "date form-control textoform inputform" })*@ 
+                    </div><br>
+                    <div class="textoform">
+                        @Html.DropDownList("Provincia1Id", null, htmlAttributes: new { @class = "form-control inputform" })
+                        @Html.ValidationMessageFor(model => model.Provincia1Id, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="textoform">
+                        @Html.DropDownList("SexoId", null, htmlAttributes: new { @class = "form-control inputform" })
+                        @Html.ValidationMessageFor(model => model.SexoId, "", new { @class = "text-danger" })
                     </div>
                 </div>
+            </div>
+            <div class="col-xs-6 col-md-6 col-sm-6 form-group">
 
-                <div class="col-xs-6 col-md-6 col-sm-6 form-group">
-
-                    <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
-                        <div class="textoform textolabel"><label for="Apellido">Apellido/s*:</label> </div>
-                        <div class="textoform textolabel"><label for="NumDoc">Nro. de documento*:</label> </div>
-                        <div class="textoform textolabel"><label for="Nacionalidad">Nacionalidad*:</label> </div>
-                        <div class="textoform textolabel"><label for="Localidad de Nacimiento">Localidad de Nacimiento*:</label> </div>
-                        <div class="textoform textolabel"><label for="Estado Civil">Estado Civil*:</label> </div>
+                <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
+                    <div class="textoform textolabel"><label for="Apellido">Apellido/s*:</label> </div>
+                    <div class="textoform textolabel"><label for="NumDoc">Nro. de documento*:</label> </div>
+                    <div class="textoform textolabel"><label for="Nacionalidad">Nacionalidad*:</label> </div>
+                    <div class="textoform textolabel"><label for="Localidad de Nacimiento">Localidad de Nacimiento*:</label> </div>
+                    <div class="textoform textolabel"><label for="Estado Civil">Estado Civil*:</label> </div>
+                </div>
+                <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
+                    <div class="textoform">
+                        <input id="Apellido" name="Apellido" class="form-control inputform" type="text" placeholder=" " required value="@ViewData["Apellido"]">
                     </div>
-
-                    <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsder">
-                        <div class="textoform">
-                            <input class="form-control inputform" type="text" placeholder=" " required id="Apellido" name="Apellido" value="@ViewData["Apellido"]">
-                        </div>
-                        <div class="textoform">
-                            <input class="form-control inputform" type="number" placeholder=" " required id="NroDoc" value="@ViewData["NroDoc"]">
-                        </div><br>
-
-                        <div class="textoform">
-                            @Html.DropDownList("Nacionalidad", null, htmlAttributes: new { @class = "form-control inputform" })
-                            @Html.ValidationMessageFor(model => model.Nacionalidad, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="textoform">
-                            @Html.DropDownList("Localidad", null, htmlAttributes: new { @class = "form-control inputform" })
-                            @Html.ValidationMessageFor(model => model.Localidad, "", new { @class = "text-danger" })
-                        </div><br>
-
-                        <div class="textoform">
-                            @Html.DropDownList("EstadoCivil", null, htmlAttributes: new { @class = "form-control inputform" })
-                            @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })
-                        </div>
+                    <div class="textoform">
+                        <input id="NroDoc" name="NroDoc" class="form-control inputform" type="number" placeholder=" " required value="@ViewData["NroDoc"]">
+                    </div><br>
+                    <div class="textoform">
+                        @Html.DropDownList("NacionalidadId", null, htmlAttributes: new { @class = "form-control inputform" })
+                        @Html.ValidationMessageFor(model => model.NacionalidadId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="textoform">
+                        @Html.DropDownList("Localidad1Id", null, htmlAttributes: new { @class = "form-control inputform" })
+                        @Html.ValidationMessageFor(model => model.Localidad1Id, "", new { @class = "text-danger" })
+                    </div><br>
+                    <div class="textoform">
+                        @Html.DropDownList("EstadoCivilId", null, htmlAttributes: new { @class = "form-control inputform" })
+                        @Html.ValidationMessageFor(model => model.EstadoCivilId, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-xs-11 col-md-11 col-sm-11 form-group formlargo">
-                <div class="col-xs-3 col-md-3 cold-sm-3 textoform textolabel">
-                    <label for="Domicilio">Domicilio*:</label>
-                </div>
-                <div class="col-xs-8 col-md-8 cold-sm-8 textoform">
-                    <input class="form-control inputlargo" type="text" placeholder=" " required id="Domicilio" value="@ViewData["Domicilio"]">
-                </div>
+    <div class="row">
+        <div class="col-xs-11 col-md-11 col-sm-11 form-group formlargo">
+            <div class="col-xs-3 col-md-3 cold-sm-3 textoform textolabel">
+                <label for="Domicilio">Domicilio*:</label>
+            </div>
+            <div class="col-xs-8 col-md-8 cold-sm-8 textoform">
+                <input id="Domicilio" name="Domicilio" class="form-control inputlargo" type="text" placeholder=" " required value="@ViewData["Domicilio"]">
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-xs-11 col-md-11 col-sm-11 form-group">
-                <div class="col-xs-6 col-md-6 col-sm-6 form-group">
-
-                    <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
-                        <div class="textoform textolabel"><label for="Pcia. de Domicilio">Pcia. de Domicilio*:</label> </div>
-                        <div class="textoform textolabel"><label for="Teléfono">Teléfono*:</label> </div>
-                        <div class="textoform textolabel"><label for="Email">Email*:</label> </div>
-                        <div class="textoform textolabel"><label for="FotoCarnet">Foto Carnet:</label></div>
-                    </div>
-
-                    <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
-
-                        <div class="textoform">
-                            @Html.DropDownList("Provincia", null, htmlAttributes: new { @class = "form-control inputform" })
-                            @Html.ValidationMessageFor(model => model.Provincia, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="textoform">
-                            <input class="form-control inputform" type="number" placeholder=" " required id="Telefono" value="@ViewData["Tel"]">
-                        </div><br>
-                        <div class="textoform">
-                            <input class="form-control inputform" type="email" placeholder=" " required id="Email" value="@ViewData["Email"]">
-                        </div>
-                        <div class="textoform selectfile">
-                            <input type="file" id="FotoCarnet">
-                        </div>
-                    </div>
+    <div class="row">
+        <div class="col-xs-11 col-md-11 col-sm-11 form-group">
+            <div class="col-xs-6 col-md-6 col-sm-6 form-group">
+                <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
+                    <div class="textoform textolabel"><label for="PciadeDomicilio">Pcia. de Domicilio*:</label> </div>
+                    <div class="textoform textolabel"><label for="Telefono">Teléfono*:</label> </div>
+                    <div class="textoform textolabel"><label for="Email">Email*:</label> </div>
+                    @* ARCHIVO *@
+                    <div class="textoform textolabel"><label for="FotoCarnet">Foto Carnet:</label></div>
                 </div>
-
-                <div class="col-xs-6 col-md-6 col-sm-6 form-group">
-                    <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
-                        <div class="textoform textolabel"> <label for="Localidad de Domicilio">Localidad de Domicilio*:</label></div>
-                        <div class="textoform textolabel"> <label for="Celular">Celular*:</label></div>
-                        <div class="textoform textolabel"> <label for="Enmancipacion">Enmancipación*:</label></div>
-                        <div class="textoform textolabel"> <label for="FotocopiaDocumento">Fotocopia Documento:</label> </div>
+                <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
+                    <div class="textoform">
+                        @Html.DropDownList("Provincia2Id", null, htmlAttributes: new { @class = "form-control inputform" })
+                        @Html.ValidationMessageFor(model => model.Provincia2Id, "", new { @class = "text-danger" })
                     </div>
-
-                    <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsder">
-
-                        <div class="textoform">
-                            @Html.DropDownList("Localidad", null, htmlAttributes: new { @class = "form-control inputform" })
-                            @Html.ValidationMessageFor(model => model.Localidad, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="textoform">
-                            <input class="form-control inputform" type="number" placeholder=" " required id="Cel" value="@ViewData["Cel"]">
-                        </div><br>
-                        <div class="textoform opciones">
-                            <label class="radio-inline"><input type="radio" name="optradio" value="si" required>S</label>
-                            <label class="radio-inline"><input type="radio" name="optradio" value="no">N</label>
-                        </div>
-                        <div class="textoform selectfile">
-                            <input type="file" id="FotocopiaDoc">
-                        </div>
-
+                    <div class="textoform">
+                        <input id="Telefono" name="Telefono" class="form-control inputform" type="number" placeholder=" " required value="@ViewData["Telefono"]">
+                    </div><br>
+                    <div class="textoform">
+                        <input id="Mail" name="Mail" class="form-control inputform" type="email" placeholder=" " required value="@ViewData["Mail"]">
+                    </div>
+                    <div class="textoform selectfile">
+                        <input type="file" id="FotoCarnet" name="FotoCarnet">
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-11 col-md-11 col-sm-11 form-group formlargo">
-                <div class="col-xs-3 col-md-3 cold-sm-3 textoform textolabel">
-                    <label for="NomyApe">Nombre y Apellido de Madre, Padre o Tutor*:</label>
+            <div class="col-xs-6 col-md-6 col-sm-6 form-group">
+                <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
+                    <div class="textoform textolabel"> <label for="Localidad de Domicilio">Localidad de Domicilio*:</label></div>
+                    <div class="textoform textolabel"> <label for="Celular">Celular*:</label></div>
+                    <div class="textoform textolabel"> <label for="Emancipacion">Emancipación*:</label></div>
+                    @* ARCHIVO *@
+                    <div class="textoform textolabel"> <label for="FotocopiaDocumento">Fotocopia Documento:</label> </div>
                 </div>
-                <div class="col-xs-8 col-md-8 cold-sm-8 textoform">
-                    <input class="form-control inputlargo" type="text" placeholder=" " required id="nya" value="@ViewData["nya"]">
+
+                <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsder">
+                    <div class="textoform">
+                        @Html.DropDownList("Localidad2Id", null, htmlAttributes: new { @class = "form-control inputform" })
+                        @Html.ValidationMessageFor(model => model.NacionalidadId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="textoform">
+                        <input id="Celular" name="Celular" class="form-control inputform" type="number" placeholder=" " required value="@ViewData["Celular"]">
+                    </div><br>
+                    <div class="textoform opciones">
+
+                    @{ if ((string)ViewData["Emancipacion"] == "si")
+                       {
+                          <label class="radio-inline"><input type="radio" name="Emancipacion" value="si" required checked> SI </label>
+                          <label class="radio-inline"><input type="radio" name="Emancipacion" value="no"> NO </label>
+                        }
+                        else
+                        {
+                          <label class="radio-inline"><input type="radio" name="Emancipacion" value="si" required > SI </label>
+                          <label class="radio-inline"><input type="radio" name="Emancipacion" value="no" checked> NO </label>
+                         }
+                      }
+                              
+      
+                    </div><br>
+                    <div class="textoform">
+                        <input type="file" id="FotocopiaDoc" name="FotocopiaDoc">
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <h4 class="titulo2">Otros Datos</h4>
+    <div class="row">
+        <div class="col-xs-11 col-md-11 col-sm-11 form-group formlargo">
+            <div class="col-xs-3 col-md-3 cold-sm-3 textoform textolabel">
+                <label for="NomyApePMT">Nombre y Apellido de Madre, Padre o Tutor*:</label>
+            </div>
+            <div class="col-xs-8 col-md-8 cold-sm-8 textoform">
+                <input id="NomyApePMT" name="NomyApePMT" class="form-control inputlargo" type="text" placeholder=" " required value="@ViewData["NomyApePMT"]">
+            </div>
+        </div>
+    </div>
 
-        <div class="row">
-            <div class="col-xs-11 col-md-11 col-sm-11 form-group">
-                <div class="col-xs-6 col-md-6 col-sm-6 form-group">
-                    <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
-                        <div class="textoform textolabel"> <label for="Carrerera">Carrera a Inscribirse*:</label> </div>
-                        <div class="textoform textolabel textolargo"> <label for="NombreColegio">Nombre de Colegio Secundario*:</label> </div>
-                        <div class="textoform textolabel"> <label for="Analitico">Analítico:</label> </div>
+    <h4 class="titulo2">Otros Datos</h4>
+
+    <div class="row">
+        <div class="col-xs-11 col-md-11 col-sm-11 form-group">
+            <div class="col-xs-6 col-md-6 col-sm-6 form-group">
+                <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
+                    <div class="textoform textolabel"> <label for="Carrerera">Carrera a Inscribirse*:</label> </div>
+                    <div class="textoform textolabel textolargo"> <label for="NombreColegio">Nombre de Colegio Secundario*:</label> </div>
+                    <div class="textoform textolabel textolargo"> <label for="TituloColegio">Titulo de Colegio Secundario*:</label> </div>
+                    @* ARCHIVOS *@
+                    <div class="textoform textolabel"> <label for="Analitico">Analítico:</label> </div>
                         <div class="textoform textolabel"> <label for="Certificado">Certificado:</label> </div>
+                </div>
+                <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
+                    <div class="textoform">
+                        @Html.DropDownList("CarreraId", null, htmlAttributes: new { @class = "form-control inputform" })
+                        @Html.ValidationMessageFor(model => model.CarreraId, "", new { @class = "text-danger" })
+                    </div><br>
+                    <div class="textoform">
+                        <input id="NombreColegio" name="NombreColegio" class="form-control inputform" type="text" placeholder=" " required value="@ViewData["NombreColegio"]">
                     </div>
-                    <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
+                    <div class="textoform">
+                        <input id="TituloColegio" name="TituloColegio" class="form-control inputform" type="text" placeholder=" " required value="@ViewData["TituloColegio"]">
+                    </div>
 
-                        <div class="textoform">
-                            @Html.DropDownList("Carrera", null, htmlAttributes: new { @class = "form-control inputform" })
-                            @Html.ValidationMessageFor(model => model.Carrera, "", new { @class = "text-danger" })
-                        </div><br>
 
-                        <div class="textoform">
-                            <input class="inputform form-control" type="text" placeholder=" " required id="Colegio" value="@ViewData["Colegio"]">
-                        </div>
+                    <div class="textoform selectfile">
+                        <input type="file" id="Analitico" name="Analitico">
+                    </div>
 
-                        <div class="textoform selectfile">
-                            <input type="file" id="Analitico">
-                        </div>
-
-                        <div class="textoform selectfile">
-                            <input type="file" id="Certificado">
-                        </div>
-
+                    <div class="textoform selectfile">
+                        <input id="Certificado" type="file" name="CertificadoTrabajo">
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="botonform">
-            <button class="btn btn-primary btn-lg active botonform">Continuar</button>
-            <br /><br /><br />
-            @*@Html.ActionLink("Continuar", "FinInscripcion", "Administrativo", null, new { @class = "btn btn-primary btn-lg active" })*@
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Continuar" class="btn btn-primary btn-lg active botonform" />
         </div>
-
-    </form>
-    <br /><br />
-    <br />
-    <div class="textooscuro">*: Campos obligatorios</div>
-
+    </div>
 }
 
+<br /><br />
+<br />
+<div class="textooscuro">*: Campos obligatorios</div>
 
+@if (TempData["mensajeerror"] != null)
+{
+    <div class="alert" role="alert">
+        @TempData["mensajeerror"]
+    </div>
+}
 
