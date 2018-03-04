@@ -17,7 +17,7 @@ namespace Preinscripcion.Entidades
         //[Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)] // PK autoincremental (Identity column)
         //public int AlumnoId { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // PK autoincremental (Identity column)
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)] // PK autoincremental (Identity column)
         public Int32 Legajo { get; set; }
         public int Telefono { get; set; }
         public int Celular { get; set; }
