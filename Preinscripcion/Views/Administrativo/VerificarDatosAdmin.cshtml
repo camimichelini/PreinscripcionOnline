@@ -41,14 +41,13 @@
                         @*@Html.EditorFor(model => model.FechaNacimiento, new { @type = "date form-control textoform inputform" })*@
                     </div>
                     <div class="textoform">
-                                @Html.DropDownListFor(x => x.Provincia1Id, pciaNac, "Elija una opción", new
-                                {
-                                    @class = "form-control inputform",
-                                    data_cascade_combo = "#stypes",
-                                    data_cascade_combo_source = Url.Action("BuscarLocNac", "Alumno"),
-                                    data_cascade_combo_param_name = "Provincia1Id"
-                                })
-
+                        @Html.DropDownListFor(x => x.Provincia1Id, pciaNac, new
+                        {
+                            @class = "form-control inputform",
+                            data_cascade_combo = "#stypes",
+                            data_cascade_combo_source = Url.Action("BuscarLocNac", "Alumno"),
+                            data_cascade_combo_param_name = "Provincia1Id"
+                        })
                     </div><br>
                     <div class="textoform">
                         @Html.DropDownList("SexoId", null, htmlAttributes: new { @class = "form-control inputform" })
@@ -271,5 +270,38 @@
         });
 
     </script>
+
+    <script>
+
+        $(document).on('change', '[data-cascade-combo2]', function (event) {
+
+            var id = $(this).attr('data-cascade-combo2');
+
+            var url = $(this).attr('data-cascade-combo-source2');
+
+            var paramName = $(this).attr('data-cascade-combo-param-name2');
+
+            var data = {};
+            data[paramName] = id;
+
+            $.ajax({
+                url: url,
+                data: {
+                    id: $(this).val()
+                }
+            }).success(function (data) {
+
+                $(id).html('');
+
+                $.each(data,
+                    function (index, type) {
+                        var content = '<option value="' + type.Value + '">' + type.Text + '</option>';
+                        $(id).append(content);
+                    });
+            });
+        });
+
+    </script>
+
 
 }
