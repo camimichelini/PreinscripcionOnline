@@ -13,7 +13,8 @@ namespace Preinscripcion.Entidades
     {
         [Key]
         public int TurnoId { get; set; }
-        public DateTime FechaHora { get; set; }
+        public string Fecha { get; set; }
+        public string Hora { get; set; }
         public Boolean Estado { get; set; }
 
     }

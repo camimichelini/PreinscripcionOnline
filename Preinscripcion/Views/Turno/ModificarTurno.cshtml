@@ -6,8 +6,8 @@
 <h3 class="titulo2">Modificá tu Turno</h3>
 
 <div style="padding-left:320px">
-    <div class="textooscuro col-xs-4 col-md-4 col-sm-4"> 
-        <label for="Turno asignado">Turno Asignado:</label> 
+    <div class="textooscuro col-xs-4 col-md-4 col-sm-4">
+        <div> <p class="texto textooscuro"> <label for="Turno asignado">Usted tenia un turno asignado para el dia @ViewData["Fecha"] a las @ViewData["Hora"] </label> </p></div><br>
         <br /><br />
         <label for="Nuevo Turno">Nuevo Turno:</label>
     </div>
@@ -21,6 +21,8 @@
 
 <div class="botonform">
     @Html.ActionLink("Modificar", "ModificarTurnoOk", "Turno", null, new { @class = "btn btn-primary btn-lg active" })
+    @Html.ActionLink("Confirmar", "Edit2", new { id1= @ViewData["TurnoId"], id2=, @class = "btn btn-primary btn-lg active" })
+
 </div>
 <br />
 <br />
