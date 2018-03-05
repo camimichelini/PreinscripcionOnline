@@ -58,7 +58,8 @@ namespace Preinscripcion.Controllers
 
         public ActionResult Turnera()
         {
-            var p = db.Turno.Where(f => f.Estado == true);
+            var p = db.Turno.Where(f => f.Estado == true).Select(f => f.Fecha); ;
+            
             p= p.Distinct();
             ViewBag.Fecha = new SelectList(p,  "Fecha");
             ViewBag.Hora = new SelectList(db.Turno, "TurnoId", "Hora");
