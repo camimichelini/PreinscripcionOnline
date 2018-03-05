@@ -98,12 +98,7 @@ namespace Preinscripcion.Controllers
 
         public ActionResult FinInscripcion([Bind(Include = "PersonaId,Nombre,Apellido,TipoDocId,NroDoc,Telefono,Celular,Mail, Domicilio, NomyApePMT, EstadoCivilId, NacionalidadId, Localidad1Id, Localidad2Id, Provincia1Id, Provincia2Id, CarreraId, SexoId, FechaNacimiento, Emancipacion, NombreColegio, TituloColegio")] Alumno alumno)
         {
-
-            System.Int32 legajo =
-             (from alu in db.Alumno
-              select alu.Legajo)
-             .Max();
-
+            System.Int32 legajo = (from alu in db.Alumno select alu.Legajo) .Max();
 
             if (legajo < 90000000)
             {
@@ -173,6 +168,7 @@ namespace Preinscripcion.Controllers
         public ActionResult VerificarDatosAdmin(Alumno alu)
         {
             string message = string.Empty;
+
             var p = db.Persona
                    .Where(b => b.NroDoc == alu.NroDoc)
                    .FirstOrDefault();
@@ -183,11 +179,10 @@ namespace Preinscripcion.Controllers
                 var alum = db.Alumno
                        .Where(b => b.PersonaId == p.PersonaId)
                        .FirstOrDefault();
-
                 ViewBag.TipoDocId = new SelectList(db.TipoDoc, "TipoDocId", "Descripcion", alum.TipoDocId);
-                ViewBag.NacionalidadId = new SelectList(db.Nacionalidad, "NacionalidadId", "Descripcion", alum.Nacionalidad);
+                ViewBag.NacionalidadId = new SelectList(db.Nacionalidad, "NacionalidadId", "Descripcion", alum.NacionalidadId);
                 ViewBag.Provincia1Id = new SelectList(db.Provincia, "ProvinciaId", "Nombre",alum.Provincia1Id );
-                ViewBag.Provincia2Id = new SelectList(db.Provincia, "ProvinciaId", "Nombre", alum.Provincia1Id);
+                ViewBag.Provincia2Id = new SelectList(db.Provincia, "ProvinciaId", "Nombre", alum.Provincia2Id);
                 ViewBag.Localidad1Id = new SelectList(db.Localidad, "LocalidadId", "Nombre", alum.Localidad1Id);
                 ViewBag.Localidad2Id = new SelectList(db.Localidad, "LocalidadId", "Nombre", alum.Localidad2Id);
                 ViewBag.EstadoCivilId = new SelectList(db.EstadoCivil, "EstadoCivilId", "Descripcion", alum.EstadoCivilId);

@@ -2,6 +2,10 @@
 
 @{
     ViewBag.Title = "Formulario";
+    var pciaNac = ViewBag.Provincia as List<SelectListItem>;
+    var locNac = ViewBag.Localidad as List<SelectListItem>;
+    var pciaDom = ViewBag.Provincia as List<SelectListItem>;
+    var locDom = ViewBag.Localidad as List<SelectListItem>;
 }
 
 @Html.ActionLink("Cerrar Sesión", "Logout", "Administrativo", null, new { @class = "botonform" })<br />
@@ -25,21 +29,27 @@
                 </div>
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
                     <div class="textoform">
-                        <input id="nombre" name="Nombre" class="form-control inputform" type="text" placeholder=" " required  value="@ViewData["Nombre"]">
+                        <input id="nombre" name="Nombre" class="form-control inputform" type="text" placeholder=" " required value="@ViewData["Nombre"]">
                         @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
                     </div>
                     <div class="textoform">
                         @Html.DropDownList("TipoDocId", null, htmlAttributes: new { @class = "form-control inputform" })
                         @Html.ValidationMessageFor(model => model.TipoDocId, "", new { @class = "text-danger" })
-                    </div><br>
-                    <div class="textoform">
-                     <input class="form-control inputform" type="datetime" placeholder=" " required id="FechaNacimiento" name="FechaNacimiento"   value="@ViewData["FechaNacimiento"]" >
-                        @*@Html.EditorFor(model => model.FechaNacimiento, new { @type = "date form-control textoform inputform" })*@ 
-                    </div><br>
-                    <div class="textoform">
-                        @Html.DropDownList("Provincia1Id", null, htmlAttributes: new { @class = "form-control inputform" })
-                        @Html.ValidationMessageFor(model => model.Provincia1Id, "", new { @class = "text-danger" })
                     </div>
+                    <div class="textoform">
+                        <input class="form-control inputform" type="datetime" placeholder=" " required id="FechaNacimiento" name="FechaNacimiento" value="@ViewData["FechaNacimiento"]">
+                        @*@Html.EditorFor(model => model.FechaNacimiento, new { @type = "date form-control textoform inputform" })*@
+                    </div>
+                    <div class="textoform">
+                                @Html.DropDownListFor(x => x.Provincia1Id, pciaNac, "Elija una opción", new
+                                {
+                                    @class = "form-control inputform",
+                                    data_cascade_combo = "#stypes",
+                                    data_cascade_combo_source = Url.Action("BuscarLocNac", "Alumno"),
+                                    data_cascade_combo_param_name = "Provincia1Id"
+                                })
+
+                    </div><br>
                     <div class="textoform">
                         @Html.DropDownList("SexoId", null, htmlAttributes: new { @class = "form-control inputform" })
                         @Html.ValidationMessageFor(model => model.SexoId, "", new { @class = "text-danger" })
@@ -67,8 +77,7 @@
                         @Html.ValidationMessageFor(model => model.NacionalidadId, "", new { @class = "text-danger" })
                     </div>
                     <div class="textoform">
-                        @Html.DropDownList("Localidad1Id", null, htmlAttributes: new { @class = "form-control inputform" })
-                        @Html.ValidationMessageFor(model => model.Localidad1Id, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(x => x.Localidad1Id, locNac, new { @class = "form-control inputform selectform", id = "stypes" })
                     </div><br>
                     <div class="textoform">
                         @Html.DropDownList("EstadoCivilId", null, htmlAttributes: new { @class = "form-control inputform" })
@@ -102,8 +111,13 @@
                 </div>
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
                     <div class="textoform">
-                        @Html.DropDownList("Provincia2Id", null, htmlAttributes: new { @class = "form-control inputform" })
-                        @Html.ValidationMessageFor(model => model.Provincia2Id, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(x => x.Provincia2Id, pciaDom, new
+                        {
+                            @class = "form-control inputform ",
+                            data_cascade_combo2 = "#stypes2",
+                            data_cascade_combo_source2 = Url.Action("BuscarLocDom", "Alumno"),
+                            data_cascade_combo_param_name2 = "Provincia2Id"
+                        })
                     </div>
                     <div class="textoform">
                         <input id="Telefono" name="Telefono" class="form-control inputform" type="number" placeholder=" " required value="@ViewData["Telefono"]">
@@ -127,27 +141,24 @@
 
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsder">
                     <div class="textoform">
-                        @Html.DropDownList("Localidad2Id", null, htmlAttributes: new { @class = "form-control inputform" })
-                        @Html.ValidationMessageFor(model => model.NacionalidadId, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(x => x.Localidad2Id, locDom, new { @class = "form-control inputform", id = "stypes2" })
                     </div>
                     <div class="textoform">
                         <input id="Celular" name="Celular" class="form-control inputform" type="number" placeholder=" " required value="@ViewData["Celular"]">
                     </div><br>
                     <div class="textoform opciones">
 
-                    @{ if ((string)ViewData["Emancipacion"] == "si")
-                       {
-                          <label class="radio-inline"><input type="radio" name="Emancipacion" value="si" required checked> SI </label>
-                          <label class="radio-inline"><input type="radio" name="Emancipacion" value="no"> NO </label>
+                        @{ if ((string)ViewData["Emancipacion"] == "si")
+                            {
+                                <label class="radio-inline"><input type="radio" name="Emancipacion" value="si" required checked> SI </label>
+                                <label class="radio-inline"><input type="radio" name="Emancipacion" value="no"> NO </label>
+                            }
+                            else
+                            {
+                                <label class="radio-inline"><input type="radio" name="Emancipacion" value="si" required> SI </label>
+                                <label class="radio-inline"><input type="radio" name="Emancipacion" value="no" checked> NO </label>
+                            }
                         }
-                        else
-                        {
-                          <label class="radio-inline"><input type="radio" name="Emancipacion" value="si" required > SI </label>
-                          <label class="radio-inline"><input type="radio" name="Emancipacion" value="no" checked> NO </label>
-                         }
-                      }
-                              
-      
                     </div><br>
                     <div class="textoform">
                         <input type="file" id="FotocopiaDoc" name="FotocopiaDoc">
@@ -179,7 +190,7 @@
                     <div class="textoform textolabel textolargo"> <label for="TituloColegio">Titulo de Colegio Secundario*:</label> </div>
                     @* ARCHIVOS *@
                     <div class="textoform textolabel"> <label for="Analitico">Analítico:</label> </div>
-                        <div class="textoform textolabel"> <label for="Certificado">Certificado:</label> </div>
+                    <div class="textoform textolabel"> <label for="Certificado">Certificado:</label> </div>
                 </div>
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
                     <div class="textoform">
@@ -226,3 +237,39 @@
     </div>
 }
 
+
+
+@section scripts{
+    <script>
+
+        $(document).on('change', '[data-cascade-combo]', function (event) {
+
+            var id = $(this).attr('data-cascade-combo');
+
+            var url = $(this).attr('data-cascade-combo-source');
+
+            var paramName = $(this).attr('data-cascade-combo-param-name');
+
+            var data = {};
+            data[paramName] = id;
+
+            $.ajax({
+                url: url,
+                data: {
+                    id: $(this).val()
+                }
+            }).success(function (data) {
+
+                $(id).html('');
+
+                $.each(data,
+                    function (index, type) {
+                        var content = '<option value="' + type.Value + '">' + type.Text + '</option>';
+                        $(id).append(content);
+                    });
+            });
+        });
+
+    </script>
+
+}
