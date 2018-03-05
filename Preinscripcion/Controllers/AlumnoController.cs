@@ -101,18 +101,51 @@ namespace Preinscripcion.Controllers
                    .Where(b => b.NroDoc == alumno.NroDoc)
                    .FirstOrDefault();
 
-            if (p == null)
+            
+            if (p == null) 
             {
-
-                if (ModelState.IsValid)
+                if ((alumno.Provincia1Id != 0) & (alumno.Localidad1Id != 0) & (alumno.Provincia2Id != 0) & (alumno.Localidad2Id != 0))
                 {
-                    using (var ctx = new PreinscripcionContext())
+                    if (ModelState.IsValid)
                     {
-                        ctx.Persona.Add(alumno);
-                        ctx.SaveChanges();
+                        using (var ctx = new PreinscripcionContext())
+                        {
+                            ctx.Persona.Add(alumno);
+                            ctx.SaveChanges();
+                        }
+                        return RedirectToAction("Turno", "Turnera");
                     }
-                    return RedirectToAction("Turno","Turnera");
                 }
+
+                else
+                {
+                    if (alumno.Provincia1Id == 0)
+                    {
+                        TempData["mensajeerror"] = "Elija la provincia de nacimiento";
+                        return RedirectToAction("Formulario", "Alumno");
+                    }
+
+                    if (alumno.Localidad1Id == 0)
+                    {
+                        TempData["mensajeerror"] = "Elija la localidad de nacimiento";
+                        return RedirectToAction("Formulario", "Alumno");
+                    }
+
+                    if (alumno.Provincia2Id == 0)
+                    {
+                        TempData["mensajeerror"] = "Elija la provincia de domicilio";
+                        return RedirectToAction("Formulario", "Alumno");
+                    }
+
+                    if (alumno.Localidad2Id == 0)
+                    {
+                        TempData["mensajeerror"] = "Elija la localidad de domicilio";
+                        return RedirectToAction("Formulario", "Alumno");
+                    }
+
+
+                }
+                
 
                 return View(new Alumno());
 
@@ -121,6 +154,7 @@ namespace Preinscripcion.Controllers
             {
                 TempData["mensajeerror"] = "Ya te preinscribiste anteriormente";
                 return RedirectToAction("Formulario", "Alumno");
+                
             }
         }
 

@@ -76,7 +76,7 @@
                         @Html.ValidationMessageFor(model => model.NacionalidadId, "", new { @class = "text-danger" })
                     </div>
                     <div class="textoform">
-                        @Html.DropDownListFor(x => x.Localidad1Id, locNac, "Elija una opción", new { @class = "form-control inputform", id = "stypes" })
+                        @Html.DropDownListFor(x => x.Localidad1Id, locNac, "Elija una opción", new { @class = "form-control inputform selectform", id = "stypes" })
                     </div>
                     <div class="textoform">
                         @Html.DropDownList("EstadoCivilId", null, htmlAttributes: new { @class = "form-control inputform selectform" })
@@ -112,7 +112,7 @@
                     <div class="textoform">
                         @Html.DropDownListFor(x => x.Provincia2Id, pciaDom, "Elija una opción", new
                         {
-                            @class = "form-control inputform",
+                            @class = "form-control inputform ",
                             data_cascade_combo2 = "#stypes2",
                             data_cascade_combo_source2 = Url.Action("BuscarLocDom", "Alumno"),
                             data_cascade_combo_param_name2 = "Provincia2Id"
