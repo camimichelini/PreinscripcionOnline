@@ -70,17 +70,17 @@ namespace Preinscripcion.Controllers
             var types = HorarioList(id);
             return Json(types, JsonRequestBehavior.AllowGet);
         }
-        private List<SelectListItem> HorarioList(string dia)
+        private List<SelectListItem> HorarioList(string idtypes)
         {
-            var stypes = db.Turno.Where(x => x.Fecha == dia)
-                                    .Where(x => x.Estado == true);
+            var stypes = db.Turno.Where(x => x.Fecha == idtypes)
+                                 .Where(x => x.Estado == true);
             var resp = stypes.Select(x => new SelectListItem()
             {
                 Value = x.TurnoId.ToString(),
                 Text = x.Hora
             }).ToList();
 
-            resp.Insert(0, new SelectListItem() { Value = "", Text = "Elija una opción" });
+            resp.Insert(0, new SelectListItem() { Value = "", Text = "Elija un horario" });
 
             return resp;
         }

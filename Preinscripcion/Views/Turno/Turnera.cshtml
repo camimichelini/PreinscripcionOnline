@@ -45,19 +45,19 @@
                     <div class="form-group input-group-sm">
 
 
-                        <div class="textooscuro col-xs-2 col-md-2 col-sm-2"> <label for="Turno">Turno:<input type="text" name="Fecha" class="datefield"></label> </div>
-                        <div class="botonform">
-                            
-                            @Html.DropDownListFor(x => x.Fecha, dia, "Elija una opción", new
-                                {
-                                    @class = "form-control inputform ",
-                                    data_cascade_combo = "#stypes",
-                                    data_cascade_combo_source = Url.Action("BuscarHorario", "Turno"),
-                                    data_cascade_combo_param_name = "Fecha"
-                                })
 
-                            @Html.DropDownListFor(x => x.Hora, hora, "Elija una opción", new { @class = "form-control inputform selectform", id = "stypes" })
-                            @*@Html.ActionLink("Buscar Horarios", "Turnera", new { fecha = @ViewData[Fecha], @class = "btn btn-primary btn-lg active" })*@
+                        <div class="">
+
+                            @Html.DropDownListFor(x => x.Fecha, dia, "Elija una Fecha", new
+                    {
+                        @class = "form-control inputform ",
+                        data_cascade_combo = "#stypes",
+                        data_cascade_combo_source = Url.Action("BuscarHorario", "Turno"),
+                        data_cascade_combo_param_name = "Fecha"
+                    })
+
+                            @Html.DropDownListFor(x => x.Hora, hora, "Elija un horario", new { @class = "form-control inputform selectform", id = "stypes" })
+                           
                         </div>
                     </div>
 
@@ -67,38 +67,42 @@
                     </div>
                 </form>
             </div>
-            <script>
 
-                $(document).on('change', '[data-cascade-combo]', function (event) {
 
-                    var id = $(this).attr('data-cascade-combo');
+   @section scripts{
+                <script>
 
-                    var url = $(this).attr('data-cascade-combo-source');
+                    $(document).on('change', '[data-cascade-combo]', function (event) {
 
-                    var paramName = $(this).attr('data-cascade-combo-param-name');
+                        var id = $(this).attr('data-cascade-combo');
 
-                    var data = {};
-                    data[paramName] = id;
+                        var url = $(this).attr('data-cascade-combo-source');
 
-                    $.ajax({
-                        url: url,
-                        data: {
-                            id: $(this).val()
-                        }
-                    }).success(function (data) {
+                        var paramName = $(this).attr('data-cascade-combo-param-name');
 
-                        $(id).html('');
+                        var data = {};
+                        data[paramName] = id;
 
-                        $.each(data,
-                            function (index, type) {
-                                var content = '<option value="' + type.Value + '">' + type.Text + '</option>';
-                                $(id).append(content);
-                            });
+                        $.ajax({
+                            url: url,
+                            data: {
+                                id: $(this).val()
+                            }
+                        }).success(function (data) {
+
+                            $(id).html('');
+
+                            $.each(data,
+                                function (index, type) {
+                                    var content = '<option value="' + type.Value + '">' + type.Text + '</option>';
+                                    $(id).append(content);
+                                });
+                        });
                     });
-                });
 
-            </script>
-        </body>
+                </script>
+    }
+            </body>
     </html>
 
 
