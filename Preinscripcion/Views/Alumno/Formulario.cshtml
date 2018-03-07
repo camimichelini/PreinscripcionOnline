@@ -6,6 +6,7 @@
     var locNac = ViewBag.Localidad as List<SelectListItem>;
     var pciaDom = ViewBag.Provincia as List<SelectListItem>;
     var locDom = ViewBag.Localidad as List<SelectListItem>;
+    var nac = ViewBag.Nacionalidad as List<SelectListItem>;
 
 }
 
@@ -40,8 +41,9 @@
                         @Html.EditorFor(model => model.FechaNacimiento, new { @type = "date form-control textoform inputform" })
                         @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })
                     </div>
-                    <div class="textoform">
-                        @Html.DropDownListFor(x => x.Provincia1Id, pciaNac, "Elija una opción", new
+                   
+                        <div class="textoform" id="arg">
+                        @Html.DropDownListFor(x => x.Provincia1Id, pciaNac, "", new
                         {
                             @class = "form-control inputform",
                             data_cascade_combo = "#stypes",
@@ -49,6 +51,8 @@
                             data_cascade_combo_param_name = "Provincia1Id"
                         })
                     </div>
+                       
+                    
                     <div class="textoform">
                         @Html.DropDownList("SexoId", null, htmlAttributes: new { @class = "form-control inputform selectform" })
                         @Html.ValidationMessageFor(model => model.SexoId, "", new { @class = "text-danger" })
@@ -72,12 +76,22 @@
                         <input id="NroDoc" name="NroDoc" class="form-control inputform" type="number" placeholder=" " required>
                     </div>
                     <div class="textoform">
-                        @Html.DropDownList("NacionalidadId", null, htmlAttributes: new { @class = "form-control inputform selectform" })
-                        @Html.ValidationMessageFor(model => model.NacionalidadId, "", new { @class = "text-danger" })
+                        @*@Html.DropDownList("NacionalidadId", null, htmlAttributes: new { @class = "form-control inputform selectform" })
+                            @Html.ValidationMessageFor(model => model.NacionalidadId, "", new { @class = "text-danger" })*@
+                        @Html.DropDownListFor(x => x.NacionalidadId, nac, "", new
+                        {
+                            @class = "form-control inputform",
+                            data_cascade_combo_source2 = Url.Action("", "Alumno"),
+                            data_cascade_combo3 = "#stypes",
+                            data_cascade_combo_param_name3 = "NacionalidadId"
+                        })
                     </div>
-                    <div class="textoform">
-                        @Html.DropDownListFor(x => x.Localidad1Id, locNac, "Elija una opción", new { @class = "form-control inputform selectform", id = "stypes" })
-                    </div>
+                   
+                        <div class="textoform" id="arg2">
+                            @Html.DropDownListFor(x => x.Localidad1Id, locNac, "", new { @class = "form-control inputform selectform", id = "stypes" })
+                        </div>
+                
+                        
                     <div class="textoform">
                         @Html.DropDownList("EstadoCivilId", null, htmlAttributes: new { @class = "form-control inputform selectform" })
                         @Html.ValidationMessageFor(model => model.EstadoCivilId, "", new { @class = "text-danger" })
@@ -110,7 +124,7 @@
                 </div>
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
                     <div class="textoform">
-                        @Html.DropDownListFor(x => x.Provincia2Id, pciaDom, "Elija una opción", new
+                        @Html.DropDownListFor(x => x.Provincia2Id, pciaDom, "", new
                         {
                             @class = "form-control inputform ",
                             data_cascade_combo2 = "#stypes2",
@@ -140,7 +154,7 @@
 
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsder">
                     <div class="textoform">
-                        @Html.DropDownListFor(x => x.Localidad2Id, locDom, "Elija una opción", new { @class = "form-control inputform", id = "stypes2" })
+                        @Html.DropDownListFor(x => x.Localidad2Id, locDom, "", new { @class = "form-control inputform", id = "stypes2" })
                     </div>
                     <div class="textoform">
                         <input id="Celular" name="Celular" class="form-control inputform" type="number" placeholder=" " required>
@@ -225,6 +239,8 @@
 }
 
 @section scripts{
+
+    
     <script>
 
         $(document).on('change', '[data-cascade-combo]', function (event) {
@@ -286,6 +302,54 @@
                     });
             });
         });
+
+    </script>
+
+    <script>
+
+        $(document).on('change', '[data-cascade-combo3]', function (event) {
+
+            var id = $(this).attr('data-cascade-combo3');
+
+            var url = $(this).attr('data-cascade-combo-source3');
+
+            var paramName = $(this).attr('data-cascade-combo-param-name3');
+
+            var data = {};
+            data[paramName] = id;
+
+            $.ajax({
+                url: url,
+                data: {
+                    id: $(this).val()
+                }
+            }).success(function (data) {
+
+                $(id).html('');
+
+                $.each(data,
+                    function (index, type) {
+                        var content = '<option value="' + type.Value + '">' + type.Text + '</option>';
+                        $(id).append(content);
+                    });
+
+                });
+
+
+
+            if ($(this).val() != 1) {
+                document.getElementById("arg").style.visibility = "hidden";
+                document.getElementById("arg2").style.visibility = "hidden";
+            }
+            else {
+
+                document.getElementById("arg").style.visibility = "visible";
+                document.getElementById("arg2").style.visibility = "visible";
+            };
+
+
+            });
+
 
     </script>
 }

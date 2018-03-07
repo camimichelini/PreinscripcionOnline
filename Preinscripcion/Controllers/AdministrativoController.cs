@@ -211,6 +211,11 @@ namespace Preinscripcion.Controllers
                 //ViewData["FotocAnalitico"] = alum.FotocAnalitico;
                 //ViewData["CertifTrabajo"] = alum.CertifTrabajo;
 
+                if (alum.NacionalidadId != 1)
+                {
+                    ViewBag.Visibility = false;
+                    ViewBag.Visibility = false;
+                }
 
                 return View();
             }

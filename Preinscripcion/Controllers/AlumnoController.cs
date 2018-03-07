@@ -43,17 +43,22 @@ namespace Preinscripcion.Controllers
         {
             ViewBag.TipoDocId = new SelectList(db.TipoDoc, "TipoDocId", "Descripcion");
             ViewBag.NacionalidadId = new SelectList(db.Nacionalidad, "NacionalidadId", "Descripcion");
-            ViewBag.Provincia1Id = new SelectList(db.Provincia, "ProvinciaId", "Nombre", null);
+            ViewBag.Provincia1Id = new SelectList(db.Provincia, "ProvinciaId", "Nombre");
             ViewBag.Provincia2Id = new SelectList(db.Provincia, "ProvinciaId", "Nombre");
             ViewBag.Localidad1Id = new SelectList(db.Localidad, "LocalidadId", "Nombre");
             ViewBag.Localidad2Id = new SelectList(db.Localidad, "LocalidadId", "Nombre");
             ViewBag.EstadoCivilId = new SelectList(db.EstadoCivil, "EstadoCivilId", "Descripcion");
             ViewBag.SexoId = new SelectList(db.Sexo, "SexoId", "Descripcion");
             ViewBag.CarreraId = new SelectList(db.Carrera, "CarreraId", "Nombre");
+            ViewData["NacId"] = 1;
 
             return View();
         }
-
+        public ActionResult BuscarNac(int? id)
+        {
+            ViewData["NacId"] = id;
+            return Json(id, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult BuscarLocNac(int? id)
         {
             var types = BuscarLocNacList(id);
@@ -68,7 +73,7 @@ namespace Preinscripcion.Controllers
                 Text = x.Nombre
             }).ToList();
 
-            resp.Insert(0, new SelectListItem() { Value = "", Text = "Elija una opción" });
+            resp.Insert(0, new SelectListItem() { Value = "", Text = "" });
 
             return resp;
         }
@@ -87,7 +92,7 @@ namespace Preinscripcion.Controllers
                 Text = x.Nombre
             }).ToList();
 
-            resp.Insert(0, new SelectListItem() { Value = "", Text = "Elija una opción" });
+            resp.Insert(0, new SelectListItem() { Value = "", Text = "" });
 
             return resp;
         }
@@ -104,6 +109,12 @@ namespace Preinscripcion.Controllers
             
             if (p == null) 
             {
+                if ( alumno.NacionalidadId != 1)
+                {
+                    alumno.Provincia1Id = 999;
+                    alumno.Localidad1Id = 999;
+                }
+
                 if ((alumno.Provincia1Id != 0) & (alumno.Localidad1Id != 0) & (alumno.Provincia2Id != 0) & (alumno.Localidad2Id != 0))
                 {
                     if (ModelState.IsValid)
@@ -113,7 +124,7 @@ namespace Preinscripcion.Controllers
                             ctx.Persona.Add(alumno);
                             ctx.SaveChanges();
                         }
-                        return RedirectToAction("Turno", "Turnera");
+                        return RedirectToAction("Turnera", "Turno");
                     }
                 }
 

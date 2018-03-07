@@ -6,6 +6,7 @@
     var locNac = ViewBag.Localidad as List<SelectListItem>;
     var pciaDom = ViewBag.Provincia as List<SelectListItem>;
     var locDom = ViewBag.Localidad as List<SelectListItem>;
+    var nac = ViewBag.Nacionalidad as List<SelectListItem>;
 }
 
 @Html.ActionLink("Cerrar Sesión", "Logout", "Administrativo", null, new { @class = "botonform" })<br />
@@ -40,7 +41,22 @@
                         <input class="form-control inputform" type="datetime" placeholder=" " required id="FechaNacimiento" name="FechaNacimiento" value="@ViewData["FechaNacimiento"]">
                         @*@Html.EditorFor(model => model.FechaNacimiento, new { @type = "date form-control textoform inputform" })*@
                     </div>
-                    <div class="textoform">
+
+                    @if (ViewBag.Visibility!=null)
+                      {
+                         <div class="textoform" id="arg" style="visibility : hidden">
+                             @Html.DropDownListFor(x => x.Provincia1Id, pciaNac, new
+                                {
+                                    @class = "form-control inputform",
+                                    data_cascade_combo = "#stypes",
+                                    data_cascade_combo_source = Url.Action("BuscarLocNac", "Alumno"),
+                                    data_cascade_combo_param_name = "Provincia1Id"
+                                })
+                         </div><br>
+                    }
+                    else
+                    {
+                    <div class="textoform" id="arg" >
                         @Html.DropDownListFor(x => x.Provincia1Id, pciaNac, new
                         {
                             @class = "form-control inputform",
@@ -48,7 +64,9 @@
                             data_cascade_combo_source = Url.Action("BuscarLocNac", "Alumno"),
                             data_cascade_combo_param_name = "Provincia1Id"
                         })
-                    </div><br>
+                      </div><br>
+                    }
+                  
                     <div class="textoform">
                         @Html.DropDownList("SexoId", null, htmlAttributes: new { @class = "form-control inputform" })
                         @Html.ValidationMessageFor(model => model.SexoId, "", new { @class = "text-danger" })
@@ -72,12 +90,28 @@
                         <input id="NroDoc" name="NroDoc" class="form-control inputform" type="number" placeholder=" " required value="@ViewData["NroDoc"]">
                     </div><br>
                     <div class="textoform">
-                        @Html.DropDownList("NacionalidadId", null, htmlAttributes: new { @class = "form-control inputform" })
-                        @Html.ValidationMessageFor(model => model.NacionalidadId, "", new { @class = "text-danger" })
+                     @Html.DropDownListFor(x => x.NacionalidadId, nac, "Elija una opción", new
+                        {
+                            @class = "form-control inputform",
+                            data_cascade_combo_source2 = Url.Action("", "Alumno"),
+                            data_cascade_combo3 = "#stypes",
+                            data_cascade_combo_param_name3 = "NacionalidadId"
+                        })
                     </div>
-                    <div class="textoform">
-                        @Html.DropDownListFor(x => x.Localidad1Id, locNac, new { @class = "form-control inputform selectform", id = "stypes" })
-                    </div><br>
+
+                     @if (ViewBag.Visibility!=null)
+                      {
+                         <div class="textoform" id="arg2"  style="visibility : hidden">
+                                 @Html.DropDownListFor(x => x.Localidad1Id, locNac, new { @class = "form-control inputform selectform", id = "stypes" })
+                         </div><br>
+                    }
+                    else
+                    {
+                          <div class="textoform" id="arg2" >
+                                @Html.DropDownListFor(x => x.Localidad1Id, locNac, new { @class = "form-control inputform selectform", id = "stypes" })
+                            </div><br>
+                    }
+                   
                     <div class="textoform">
                         @Html.DropDownList("EstadoCivilId", null, htmlAttributes: new { @class = "form-control inputform" })
                         @Html.ValidationMessageFor(model => model.EstadoCivilId, "", new { @class = "text-danger" })
@@ -300,6 +334,54 @@
                     });
             });
         });
+
+    </script>
+
+    <script>
+
+        $(document).on('change', '[data-cascade-combo3]', function (event) {
+
+            var id = $(this).attr('data-cascade-combo3');
+
+            var url = $(this).attr('data-cascade-combo-source3');
+
+            var paramName = $(this).attr('data-cascade-combo-param-name3');
+
+            var data = {};
+            data[paramName] = id;
+
+            $.ajax({
+                url: url,
+                data: {
+                    id: $(this).val()
+                }
+            }).success(function (data) {
+
+                $(id).html('');
+
+                $.each(data,
+                    function (index, type) {
+                        var content = '<option value="' + type.Value + '">' + type.Text + '</option>';
+                        $(id).append(content);
+                    });
+
+            });
+
+
+
+            if ($(this).val() != 1) {
+                document.getElementById("arg").style.visibility = "hidden";
+                document.getElementById("arg2").style.visibility = "hidden";
+            }
+            else {
+
+                document.getElementById("arg").style.visibility = "visible";
+                document.getElementById("arg2").style.visibility = "visible";
+            };
+
+
+        });
+
 
     </script>
 
