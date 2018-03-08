@@ -5,13 +5,11 @@
 
 <h3 class="titulo2">Cancelá tu Turno</h3>
 
-<div> <p class="texto textooscuro"> <label for="Turno asignado">Usted tenia un turno asignado para el dia @ViewData["Fecha"] a las @ViewData["Hora"] </label> </p></div><br>
+<div> <p class="texto textooscuro"> <label for="Turno asignado">Tenías un turno asignado para el día @ViewData["Fecha"] a las @ViewData["Hora"] </label> </p></div><br>
 
 <div class="botonform">
     @Html.ActionLink("Confirmar", "Edit", new { id= @ViewData["PreinscripcionID"], @class = "btn btn-primary btn-lg active" })
 </div>
-
-
 
 
 <br />

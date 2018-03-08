@@ -111,7 +111,6 @@ namespace Preinscripcion.Controllers
                    .Where(b => b.NroDoc == alumno.NroDoc)
                    .FirstOrDefault();
 
-
             if (p == null)
             {
                 if (alumno.NacionalidadId != 1)
@@ -133,7 +132,7 @@ namespace Preinscripcion.Controllers
                             ctx.Persona.Add(alumno);
                             ctx.SaveChanges();
                         }
-                        return RedirectToAction("Turnera", "Turno");
+                        return RedirectToAction("Turnera", "Turno", new { id = alumno.PersonaId });
                     }
                 }
 

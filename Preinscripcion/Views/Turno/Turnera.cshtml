@@ -1,4 +1,4 @@
-﻿@model Preinscripcion.Entidades.Turno
+﻿@model Preinscripcion.Models.ModelTurnera
 @{
     ViewBag.Title = "Turnera";
     var dia = ViewBag.Turno as List<SelectListItem>;
@@ -6,103 +6,85 @@
     var hora = ViewBag.Turno as List<SelectListItem>;
 }
 
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-1.12.1.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="~/Content/jquery-ui.css" type="text/css">
+<link rel="stylesheet" href="~/Content/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="~/Content/jquery-ui.structure.css" type="text/css">
+<link rel="stylesheet" href="~/Content/jquery-ui.structure.min.css" type="text/css">
+<link rel="stylesheet" href="~/Content/jquery-ui.theme.css" type="text/css">
+<link rel="stylesheet" href="~/Content/jquery-ui.theme.min.css" type="text/css">
 
 
+<script src="~/Scripts/jquery-ui.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-ui.min.js" type="text/javascript"></script>
 
 
-        <!doctype html>
-        <html lang="en">
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <script src="https://code.jquery.com/jquery-1.12.1.min.js" type="text/javascript"></script>
-            <link rel="stylesheet" href="~/Content/jquery-ui.css" type="text/css">
-            <link rel="stylesheet" href="~/Content/jquery-ui.min.css" type="text/css">
-            <link rel="stylesheet" href="~/Content/jquery-ui.structure.css" type="text/css">
-            <link rel="stylesheet" href="~/Content/jquery-ui.structure.min.css" type="text/css">
-            <link rel="stylesheet" href="~/Content/jquery-ui.theme.css" type="text/css">
-            <link rel="stylesheet" href="~/Content/jquery-ui.theme.min.css" type="text/css">
-
-
-            <script src="~/Scripts/jquery-ui.js" type="text/javascript"></script>
-            <script src="~/Scripts/jquery-ui.min.js" type="text/javascript"></script>
-
-            <script type="text/javascript">
-                $.noConflict();
-                jQuery(document).ready(function ($) {
-                    $(function () {
-                        $(".datefield").datepicker();
-                    });
-                });
-            </script>
           
-        </head>
-        <body>
-            <h3 class="titulo2">Elegí día y horario del turno para completar la inscripción</h3>
-            <div style="padding-left:400px">
-
-                <form accept-charset="uft-8" method="post">
-                    <div class="form-group input-group-sm">
-
-
-
-                        <div class="">
-
-                            @Html.DropDownListFor(x => x.Fecha, dia, "Elija una Fecha", new
-                    {
-                        @class = "form-control inputform ",
-                        data_cascade_combo = "#stypes",
-                        data_cascade_combo_source = Url.Action("BuscarHorario", "Turno"),
-                        data_cascade_combo_param_name = "Fecha"
-                    })
-
-                            @Html.DropDownListFor(x => x.Hora, hora, "Elija un horario", new { @class = "form-control inputform selectform", id = "stypes" })
-                           
-                        </div>
-                    </div>
-
-
-                    <div class="botonform">
-                        @Html.ActionLink("Continuar", "FinPreinscripcion", "Preinscripcion", null, new { @class = "btn btn-primary btn-lg active" })
-                    </div>
-                </form>
+</head>
+<body>
+<h3 class="titulo2">Elegí día y horario del turno para completar la inscripción</h3>
+<br />
+<div style="padding-left:400px">
+@using (@Html.BeginForm("Turnera", "Turno", FormMethod.Post, new { id = ViewData["PersonaId"] }))
+{
+    <form accept-charset="uft-8" method="post">
+        <div class="form-group input-group-sm">
+            <div>
+                @Html.DropDownListFor(x => x.Fecha, dia, "Elegí una fecha", new
+                {
+                    @class = "form-control inputform ",
+                    data_cascade_combo = "#stypes",
+                    data_cascade_combo_source = Url.Action("BuscarHorario", "Turno"),
+                    data_cascade_combo_param_name = "Fecha"
+                })
             </div>
+            <div>
+                @Html.DropDownListFor(x => x.Hora, hora, "Elegí un horario", new { @class = "form-control inputform selectform", id = "stypes" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Continuar" class="btn btn-primary btn-lg active botonform" />
+                <br />
+                <br />
+            </div>
+        </div>
+    </form>
+    <br />
+}
+</div>
 
+@section scripts{
+    <script>
+        $(document).on('change', '[data-cascade-combo]', function (event) {
+            var id = $(this).attr('data-cascade-combo');
+            var url = $(this).attr('data-cascade-combo-source');
+            var paramName = $(this).attr('data-cascade-combo-param-name');
+            var data = {};
+            data[paramName] = id;
 
-   @section scripts{
-                <script>
-
-                    $(document).on('change', '[data-cascade-combo]', function (event) {
-
-                        var id = $(this).attr('data-cascade-combo');
-
-                        var url = $(this).attr('data-cascade-combo-source');
-
-                        var paramName = $(this).attr('data-cascade-combo-param-name');
-
-                        var data = {};
-                        data[paramName] = id;
-
-                        $.ajax({
-                            url: url,
-                            data: {
-                                id: $(this).val()
-                            }
-                        }).success(function (data) {
-
-                            $(id).html('');
-
-                            $.each(data,
-                                function (index, type) {
-                                    var content = '<option value="' + type.Value + '">' + type.Text + '</option>';
-                                    $(id).append(content);
-                                });
-                        });
-                    });
-
-                </script>
-    }
-            </body>
-    </html>
+            $.ajax({
+                url: url,
+                data: {
+                id: $(this).val()
+                }
+            }).success(function (data) {
+                $(id).html('');
+                $.each(data,
+                function (index, type) {
+                    var content = '<option value="' + type.Value + '">' + type.Text + '</option>';
+                    $(id).append(content);
+                });
+            });
+        });
+        </script>
+}
+</body>
+</html>
 
 

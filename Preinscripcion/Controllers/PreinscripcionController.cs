@@ -1,13 +1,18 @@
-﻿using System;
+﻿using Preinscripcion.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Preinscripcion.AccesoDatos.Context;
+using System.Data.Entity;
 
 namespace Preinscripcion.Controllers
 {
     public class PreinscripcionController : Controller
     {
+
+        private PreinscripcionContext db = new PreinscripcionContext();
         // GET: Preinscripcion
         public ActionResult Index()
         {
@@ -91,5 +96,8 @@ namespace Preinscripcion.Controllers
         {
             return View();
         }
+
     }
+    
+    
 }
