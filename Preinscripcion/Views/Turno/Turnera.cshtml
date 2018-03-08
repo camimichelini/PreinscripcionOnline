@@ -59,6 +59,13 @@
 }
 </div>
 
+@if (TempData["mensajeerror"] != null)
+{
+    <div class="alert" role="alert">
+        @TempData["mensajeerror"]
+    </div>
+}
+
 @section scripts{
     <script>
         $(document).on('change', '[data-cascade-combo]', function (event) {

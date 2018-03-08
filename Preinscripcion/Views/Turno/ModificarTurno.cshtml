@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "ModificarTurno";
     var dia = ViewBag.Turno as List<SelectListItem>;
-    var hora = ViewBag.Turno as List<SelectListItem>;
+    var idT = ViewBag.Turno as List<SelectListItem>;
 }
 <!doctype html>
 <html lang="en">
@@ -45,7 +45,7 @@
                })
                     </div>
                     <div>
-                        @Html.DropDownListFor(x => x.Hora, hora, "Elegí un horario", new { @class = "form-control inputform selectform", id = "stypes" })
+                        @Html.DropDownListFor(x => x.Hora, idT, "Elegí un horario", new { @class = "form-control inputform selectform", id = "stypes" })
                     </div>
                 </div>
             </form>
