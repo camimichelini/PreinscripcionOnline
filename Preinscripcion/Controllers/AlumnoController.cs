@@ -54,17 +54,20 @@ namespace Preinscripcion.Controllers
 
             return View();
         }
+
         public ActionResult BuscarNac(int? id)
         {
             ViewData["NacId"] = id;
             return Json(id, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult BuscarLocNac(int? id)
         {
             var types = BuscarLocNacList(id);
             return Json(types, JsonRequestBehavior.AllowGet);
         }
-         private List<SelectListItem> BuscarLocNacList(int? idType)
+
+        private List<SelectListItem> BuscarLocNacList(int? idType)
         {
             var stypes = db.Localidad.Where(x => x.ProvinciaId == idType);
             var resp = stypes.Select(x => new SelectListItem()
@@ -83,6 +86,7 @@ namespace Preinscripcion.Controllers
             var types = BuscarLocDomList(id);
             return Json(types, JsonRequestBehavior.AllowGet);
         }
+
         private List<SelectListItem> BuscarLocDomList(int? idType)
         {
             var stypes = db.Localidad.Where(x => x.ProvinciaId == idType);
@@ -99,17 +103,18 @@ namespace Preinscripcion.Controllers
 
         // POST: Guardar Alumno en la BD
         [HttpPost]
-        public ActionResult Formulario([Bind(Include = "PersonaId,Nombre,Apellido,TipoDocId,NroDoc,Telefono,Celular,Mail, Domicilio, NomyApePMT, EstadoCivilId, NacionalidadId, Localidad1Id, Localidad2Id, Provincia1Id, Provincia2Id, CarreraId, SexoId, FechaNacimiento, Emancipacion, NombreColegio, TituloColegio")] Alumno alumno)
+        public ActionResult Formulario([Bind(Include = "PersonaId,Nombre,Apellido,TipoDocId,NroDoc,Telefono,Celular,Mail, Domicilio, NomyApePMT, EstadoCivilId, NacionalidadId, Localidad1Id, Localidad2Id, Provincia1Id, Provincia2Id, CarreraId, SexoId, FechaNacimiento, Emancipacion, NombreColegio, TituloColegio")] Alumno alumno,
+            HttpPostedFileBase FotoCarnet, HttpPostedFileBase FotoDoc, HttpPostedFileBase CertificadoTrabajo, HttpPostedFileBase Analitico)
         {
             string message = string.Empty;
             var p = db.Alumno
                    .Where(b => b.NroDoc == alumno.NroDoc)
                    .FirstOrDefault();
 
-            
-            if (p == null) 
+
+            if (p == null)
             {
-                if ( alumno.NacionalidadId != 1)
+                if (alumno.NacionalidadId != 1)
                 {
                     alumno.Provincia1Id = 999;
                     alumno.Localidad1Id = 999;
@@ -121,6 +126,10 @@ namespace Preinscripcion.Controllers
                     {
                         using (var ctx = new PreinscripcionContext())
                         {
+                            alumno.FotoCarnet = FileToArrayByte(FotoCarnet);
+                            alumno.FotoDoc = FileToArrayByte(FotoDoc);
+                            alumno.CertificadoTrabajo = FileToArrayByte(CertificadoTrabajo);
+                            alumno.Analitico = FileToArrayByte(Analitico);
                             ctx.Persona.Add(alumno);
                             ctx.SaveChanges();
                         }
@@ -156,7 +165,7 @@ namespace Preinscripcion.Controllers
 
 
                 }
-                
+
 
                 return View(new Alumno());
 
@@ -165,12 +174,26 @@ namespace Preinscripcion.Controllers
             {
                 TempData["mensajeerror"] = "Ya te preinscribiste anteriormente";
                 return RedirectToAction("Formulario", "Alumno");
-                
+
             }
         }
 
-        
-     // GET: Alumno/Edit/5
+        private static byte[] FileToArrayByte(HttpPostedFileBase file) //poner ? al lado de byte[]
+        {
+            if ((file != null) && (file.ContentLength > 0))
+            {
+                //byte?[] adjunto = new byte?[file.ContentLength];
+                byte[] adjunto = new byte[file.ContentLength];
+                file.InputStream.Read(adjunto, 0, adjunto.Length);
+                //Convert.ToBase64String(adjunto) --> PARA EL VERIFICARDATOS
+                return adjunto;
+
+            }
+            return null;
+        }
+
+
+        // GET: Alumno/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
@@ -216,3 +239,5 @@ namespace Preinscripcion.Controllers
 
     }
 }        
+
+  

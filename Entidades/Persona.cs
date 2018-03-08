@@ -15,16 +15,11 @@ namespace Preinscripcion.Entidades
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // PK autoincremental (Identity column)
         public Int64 PersonaId { get; set; }
-
-
         public string Nombre { get; set; }
-
-
         public string Apellido { get; set; }
-
+        [ForeignKey("TipoDoc")]
         public int TipoDocId { get; set; }
         public virtual TipoDoc TipoDoc { get; set; }
-
         public int NroDoc { get; set; }
 
     }

@@ -13,10 +13,10 @@
 <h3 class="titulo2">Completá el formulario</h3> <br>
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@using (Html.BeginForm("Formulario", "Alumno", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <h4 class="titulo2">Datos personales</h4> <br>
     <div class="row">
         <div class="col-xs-11 col-md-11 col-sm-11 form-group">
@@ -149,7 +149,7 @@
                     <div class="textoform textolabel"> <label for="Celular">Celular*:</label></div>
                     <div class="textoform textolabel"> <label for="Emancipacion">Emancipación*:</label></div>
                     @* ARCHIVO *@
-                    <div class="textoform textolabel"> <label for="FotocopiaDocumento">Fotocopia Documento:</label> </div>
+                    <div class="textoform textolabel"> <label for="FotoDoc">Fotocopia Documento:</label> </div>
                 </div>
 
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsder">
@@ -164,7 +164,7 @@
                         <label class="radio-inline"><input type="radio" name="Emancipacion" value="no"> NO </label>
                     </div>
                     <div class="textoform">
-                        <input type="file" id="FotocopiaDoc" name="FotocopiaDoc">
+                        <input type="file" id="FotoDoc" name="FotoDoc">
                     </div>
                 </div>
             </div>

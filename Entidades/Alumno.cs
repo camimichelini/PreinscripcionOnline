@@ -32,29 +32,35 @@ namespace Preinscripcion.Entidades
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaNacimiento { get; set; }
 
+        [ForeignKey("EstadoCivil")]
         public int EstadoCivilId { get; set; }
         public virtual EstadoCivil EstadoCivil { get; set; }
+        [ForeignKey("Nacionalidad")]
         public int NacionalidadId { get; set; }
         public virtual Nacionalidad Nacionalidad { get; set; }
+        [ForeignKey("Sexo")]
         public int SexoId { get; set; }
         public virtual Sexo Sexo { get; set; }
+        //[ForeignKey("LugarNacimiento")]
         public int Localidad1Id { get; set; }
-        //public virtual Localidad LugarNacimiento { get; set; }
+        public virtual Localidad LugarNacimiento { get; set; }
+        //[ForeignKey("LugarDomicilio")]
         public int Localidad2Id { get; set; }
-        //public virtual Localidad LugarDomicilio { get; set; }
+        public virtual Localidad LugarDomicilio { get; set; }
+        //[ForeignKey("ProvinciaNacimiento")]
         public int Provincia1Id { get; set; }
-        //public virtual Provincia ProvinciaNacimiento { get; set; }
+        public virtual Provincia ProvinciaNacimiento { get; set; }
+        //[ForeignKey("ProvinciaDomicilio")]
         public int Provincia2Id { get; set; }
-        //public virtual Provincia ProvinciaDomicilio { get; set; }
+        public virtual Provincia ProvinciaDomicilio { get; set; }
+        [ForeignKey("Carrera")]
         public int CarreraId { get; set; }
         public virtual Carrera Carrera { get; set; }
 
-
-        //VER ARCHIVOS
-        //public FileStream FotoCarnet { get; set; }
-        //public FileStream FotocDoc { get; set; }
-        //public FileStream FotocAnalitico { get; set; }
-        //public FileStream CertifTrabajo { get; set; }
-
+        //public byte?[] FotoCarnet { get; set; }
+        public byte[] FotoCarnet { get; set; }
+        public byte[] FotoDoc { get; set; }
+        public byte[] Analitico { get; set; }
+        public byte[] CertificadoTrabajo { get; set; }
     }
 }
