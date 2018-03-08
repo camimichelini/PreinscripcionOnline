@@ -13,14 +13,10 @@ namespace Preinscripcion.Entidades
     public class PreinscripcionOnline
     {
         [Key]
-        public int PreinscripcionOnlineId { get; set; }
-        public DateTime Fecha { get; set; }
-        public DateTime Hora { get; set; }
-
-        public virtual Alumno Alumno { get; set; }
-        public virtual Carrera Carrera { get; set; }
-        public virtual Turno Turno { get; set; }
-        
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // PK autoincremental (Identity column)
+        public int PreinscripcionId { get; set; }
+        public int PersonaId { get; set; }
+        public int TurnoId { get; set; }
 
     }
 }
