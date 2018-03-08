@@ -1,4 +1,4 @@
-﻿a@model Preinscripcion.Entidades.Turno
+﻿@model Preinscripcion.Entidades.Turno
 @{
     ViewBag.Title = "CancelarTurno";
 }
@@ -8,7 +8,7 @@
 <div> <p class="texto textooscuro"> <label for="Turno asignado">Usted tenia un turno asignado para el dia @ViewData["Fecha"] a las @ViewData["Hora"] </label> </p></div><br>
 
 <div class="botonform">
-    @Html.ActionLink("Confirmar", "Edit", new { id= @ViewData["TurnoId"], @class = "btn btn-primary btn-lg active" })
+    @Html.ActionLink("Confirmar", "Edit", new { id= @ViewData["PreinscripcionID"], @class = "btn btn-primary btn-lg active" })
 </div>
 
 
