@@ -22,10 +22,10 @@
         <div class="col-xs-11 col-md-11 col-sm-11 form-group">
             <div class="col-xs-6 col-md-6 col-sm-6 form-group">
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
-                    <div class="textoform textolabel"><label for="Nombre">Nombre*:</label></div>
-                    <div class="textoform textolabel"> <label for="Tipo de Documento">Tipo de Documento*:</label> </div>
-                    <div class="textoform textolabel"> <label for="Fecha de Nacimiento">Fecha de Nacimiento*:</label> </div>
-                    <div class="textoform textolabel"> <label for="Pcia. de Nacimiento">Pcia.de nacimiento*:</label> </div>
+                    <div class="textoform textolabel"><label for="Nombre">Nombre:</label></div>
+                    <div class="textoform textolabel"> <label for="Tipo de Documento">Tipo de Documento:</label> </div>
+                    <div class="textoform textolabel"> <label for="Fecha de Nacimiento">Fecha de Nacimiento:</label> </div>
+                    <div class="textoform textolabel"> <label for="Pcia. de Nacimiento">Pcia.de nacimiento:</label> </div>
                     <div class="textoform textolabel"> <label for="Sexo">Sexo:</label> </div>
                 </div>
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
@@ -76,11 +76,11 @@
             <div class="col-xs-6 col-md-6 col-sm-6 form-group">
 
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
-                    <div class="textoform textolabel"><label for="Apellido">Apellido/s*:</label> </div>
-                    <div class="textoform textolabel"><label for="NumDoc">Nro. de documento*:</label> </div>
-                    <div class="textoform textolabel"><label for="Nacionalidad">Nacionalidad*:</label> </div>
-                    <div class="textoform textolabel"><label for="Localidad de Nacimiento">Localidad de Nacimiento*:</label> </div>
-                    <div class="textoform textolabel"><label for="Estado Civil">Estado Civil*:</label> </div>
+                    <div class="textoform textolabel"><label for="Apellido">Apellido/s:</label> </div>
+                    <div class="textoform textolabel"><label for="NumDoc">Nro. de documento:</label> </div>
+                    <div class="textoform textolabel"><label for="Nacionalidad">Nacionalidad:</label> </div>
+                    <div class="textoform textolabel"><label for="Localidad de Nacimiento">Localidad de Nacimiento:</label> </div>
+                    <div class="textoform textolabel"><label for="Estado Civil">Estado Civil:</label> </div>
                 </div>
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
                     <div class="textoform">
@@ -124,7 +124,7 @@
     <div class="row">
         <div class="col-xs-11 col-md-11 col-sm-11 form-group formlargo">
             <div class="col-xs-3 col-md-3 cold-sm-3 textoform textolabel">
-                <label for="Domicilio">Domicilio*:</label>
+                <label for="Domicilio">Domicilio:</label>
             </div>
             <div class="col-xs-8 col-md-8 cold-sm-8 textoform">
                 <input id="Domicilio" name="Domicilio" class="form-control inputlargo" type="text" placeholder=" " required value="@ViewData["Domicilio"]">
@@ -136,9 +136,9 @@
         <div class="col-xs-11 col-md-11 col-sm-11 form-group">
             <div class="col-xs-6 col-md-6 col-sm-6 form-group">
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
-                    <div class="textoform textolabel"><label for="PciadeDomicilio">Pcia. de Domicilio*:</label> </div>
-                    <div class="textoform textolabel"><label for="Telefono">Teléfono*:</label> </div>
-                    <div class="textoform textolabel"><label for="Email">Email*:</label> </div>
+                    <div class="textoform textolabel"><label for="PciadeDomicilio">Pcia. de Domicilio:</label> </div>
+                    <div class="textoform textolabel"><label for="Telefono">Teléfono:</label> </div>
+                    <div class="textoform textolabel"><label for="Email">Email:</label> </div>
                     @* ARCHIVO *@
                     <div class="textoform textolabel"><label for="FotoCarnet">Foto Carnet:</label></div>
                 </div>
@@ -171,9 +171,9 @@
             </div>
             <div class="col-xs-6 col-md-6 col-sm-6 form-group">
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
-                    <div class="textoform textolabel"> <label for="Localidad de Domicilio">Localidad de Domicilio*:</label></div>
-                    <div class="textoform textolabel"> <label for="Celular">Celular*:</label></div>
-                    <div class="textoform textolabel"> <label for="Emancipacion">Emancipación*:</label></div>
+                    <div class="textoform textolabel"> <label for="Localidad de Domicilio">Localidad de Domicilio:</label></div>
+                    <div class="textoform textolabel"> <label for="Celular">Celular:</label></div>
+                    <div class="textoform textolabel"> <label for="Emancipacion">Emancipación:</label></div>
                     @* ARCHIVO *@
                     <div class="textoform textolabel"> <label for="FotocopiaDocumento">Fotocopia Documento:</label> </div>
                 </div>
@@ -185,7 +185,7 @@
                     <div class="textoform">
                         <input id="Celular" name="Celular" class="form-control inputform" type="number" placeholder=" " required value="@ViewData["Celular"]">
                     </div><br>
-                    <div class="textoform opciones">
+                    <div class="textoform opciones-verif">
 
                         @{ if ((string)ViewData["Emancipacion"] == "si")
                             {
@@ -204,7 +204,7 @@
                           @{ if (ViewData["FotoDoc"] != null)
                              {
                                  <a href="data:image/jpeg;base64,@ViewData["FotoDoc"]" target="_blank" download="FotoDoc.jpg">Fotocopia documento</a>
-                            }
+                             }
 
                            }
                     </div>
@@ -216,7 +216,7 @@
     <div class="row">
         <div class="col-xs-11 col-md-11 col-sm-11 form-group formlargo">
             <div class="col-xs-3 col-md-3 cold-sm-3 textoform textolabel">
-                <label for="NomyApePMT">Nombre y Apellido de Madre, Padre o Tutor*:</label>
+                <label for="NomyApePMT">Nombre y Apellido de Madre, Padre o Tutor:</label>
             </div>
             <div class="col-xs-8 col-md-8 cold-sm-8 textoform">
                 <input id="NomyApePMT" name="NomyApePMT" class="form-control inputlargo" type="text" placeholder=" " required value="@ViewData["NomyApePMT"]">
@@ -230,9 +230,9 @@
         <div class="col-xs-11 col-md-11 col-sm-11 form-group">
             <div class="col-xs-6 col-md-6 col-sm-6 form-group">
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group labelform">
-                    <div class="textoform textolabel"> <label for="Carrerera">Carrera a Inscribirse*:</label> </div>
-                    <div class="textoform textolabel textolargo"> <label for="NombreColegio">Nombre de Colegio Secundario*:</label> </div>
-                    <div class="textoform textolabel textolargo"> <label for="TituloColegio">Titulo de Colegio Secundario*:</label> </div>
+                    <div class="textoform textolabel"> <label for="Carrerera">Carrera a Inscribirse:</label> </div>
+                    <div class="textoform textolabel textolargo"> <label for="NombreColegio">Nombre de Colegio Secundario:</label> </div>
+                    <div class="textoform textolabel textolargo"> <label for="TituloColegio">Titulo de Colegio Secundario:</label> </div>
                     @* ARCHIVOS *@
                     <div class="textoform textolabel"> <label for="Analitico">Analítico:</label> </div>
                     <div class="textoform textolabel"> <label for="Certificado">Certificado:</label> </div>
@@ -254,7 +254,7 @@
                         <input type="file" id="Analitico" name="Analitico">
                          @{ if (ViewData["Analitico"] != null)
                              {
-                                 <a href="data:image/jpeg;base64,@ViewData["Analitico"]" target="_blank" download="Analitico.jpg"> Analitico</a>
+                                 <a href="data:image/jpeg;base64,@ViewData["Analitico"]" target="_blank" download="Analitico.pdf"> Analitico</a>
                             }
 
                            }
@@ -265,7 +265,7 @@
                         <input id="Certificado" type="file" name="CertificadoTrabajo">
                           @{ if (ViewData["CertificadoTrabajo"] != null)
                              {
-                                 <a href="data:image/jpeg;base64,@ViewData["CertificadoTrabajo"]" target="_blank" download="CertificadoTrabajo.jpg"> Certificado de trabajo</a>
+                                 <a href="data:image/jpeg;base64,@ViewData["CertificadoTrabajo"]" target="_blank" download="CertificadoTrabajo.pdf"> Certificado de trabajo</a>
                             }
 
                            }
@@ -286,7 +286,6 @@
 
 <br /><br />
 <br />
-<div class="textooscuro">*: Campos obligatorios</div>
 
 @if (TempData["mensajeerror"] != null)
 {
