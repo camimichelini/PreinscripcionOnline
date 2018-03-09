@@ -2,10 +2,10 @@
 
 @{
     ViewBag.Title = "Formulario";
-    var pciaNac = ViewBag.Provincia as List<SelectListItem>;
-    var locNac = ViewBag.Localidad as List<SelectListItem>;
-    var pciaDom = ViewBag.Provincia as List<SelectListItem>;
-    var locDom = ViewBag.Localidad as List<SelectListItem>;
+    var pciaNac = ViewBag.Provincia1Id as List<SelectListItem>;
+    var locNac = ViewBag.Localidad1Id as List<SelectListItem>;
+    var pciaDom = ViewBag.Provincia2Id as List<SelectListItem>;
+    var locDom = ViewBag.Localidad2Id as List<SelectListItem>;
     var nac = ViewBag.Nacionalidad as List<SelectListItem>;
 }
 
@@ -160,6 +160,12 @@
                     </div>
                     <div class="textoform selectfile">
                         <input type="file" id="FotoCarnet" name="FotoCarnet">
+                         @{ if (ViewData["FotoCarnet"] != null)
+                             {
+                                 <a href="data:image/jpeg;base64,@ViewData["FotoCarnet"]" target="_blank" download="FotoCarnet.jpg">Foto Carnet</a>
+                            }
+
+                           }
                     </div>
                 </div>
             </div>
@@ -194,7 +200,13 @@
                         }
                     </div><br>
                     <div class="textoform">
-                        <input type="file" id="FotocopiaDoc" name="FotocopiaDoc">
+                        <input type="file" id="FotoDoc" name="FotoDoc">
+                          @{ if (ViewData["FotoDoc"] != null)
+                             {
+                                 <a href="data:image/jpeg;base64,@ViewData["FotoDoc"]" target="_blank" download="FotoDoc.jpg">Fotocopia documento</a>
+                            }
+
+                           }
                     </div>
                 </div>
             </div>
@@ -240,10 +252,23 @@
 
                     <div class="textoform selectfile">
                         <input type="file" id="Analitico" name="Analitico">
+                         @{ if (ViewData["Analitico"] != null)
+                             {
+                                 <a href="data:image/jpeg;base64,@ViewData["Analitico"]" target="_blank" download="Analitico.jpg"> Analitico</a>
+                            }
+
+                           }
+                       
                     </div>
 
                     <div class="textoform selectfile">
                         <input id="Certificado" type="file" name="CertificadoTrabajo">
+                          @{ if (ViewData["CertificadoTrabajo"] != null)
+                             {
+                                 <a href="data:image/jpeg;base64,@ViewData["CertificadoTrabajo"]" target="_blank" download="CertificadoTrabajo.jpg"> Certificado de trabajo</a>
+                            }
+
+                           }
                     </div>
                 </div>
             </div>

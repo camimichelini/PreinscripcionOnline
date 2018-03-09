@@ -108,6 +108,8 @@ namespace Preinscripcion.Controllers
                 alumno.Legajo = legajo + 1;
             }
 
+
+
             if (ModelState.IsValid)
             {
                 using (var ctx = new PreinscripcionContext())
@@ -203,10 +205,33 @@ namespace Preinscripcion.Controllers
                 ViewData["Emancipacion"] = alum.Emancipacion;
 
                 //archivos
-                //ViewData["FotoCarnet"] = alum.FotoCarnet;
-                //ViewData["FotocDoc"] = alum.FotocDoc;
-                //ViewData["FotocAnalitico"] = alum.FotocAnalitico;
-                //ViewData["CertifTrabajo"] = alum.CertifTrabajo;
+                if (alum.FotoDoc != null)
+                {
+                    string FotocDoc = Convert.ToBase64String(alum.FotoDoc, 0, alum.FotoDoc.Length);
+                    ViewData["FotocDoc"] = FotocDoc;
+                }
+
+
+                if (alum.CertificadoTrabajo != null)
+                {
+                    string CertificadoTrabajo = Convert.ToBase64String(alum.CertificadoTrabajo, 0, alum.CertificadoTrabajo.Length);
+                    ViewData["CertificadoTrabajo"] = CertificadoTrabajo;
+                }
+
+
+                if (alum.FotoCarnet != null)
+                {
+                    string FotoCarnet = Convert.ToBase64String(alum.FotoCarnet, 0, alum.FotoCarnet.Length);
+                    ViewData["FotoCarnet"] = FotoCarnet;
+                }
+
+
+                if (alum.Analitico != null)
+                {
+                    string Analitico = Convert.ToBase64String(alum.Analitico, 0, alum.Analitico.Length);
+                    ViewData["Analitico"] = Analitico;
+                }
+
 
                 if (alum.NacionalidadId != 1)
                 {

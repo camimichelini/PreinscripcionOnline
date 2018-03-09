@@ -45,21 +45,15 @@ namespace Preinscripcion.Controllers
             ViewBag.NacionalidadId = new SelectList(db.Nacionalidad, "NacionalidadId", "Descripcion");
             ViewBag.Provincia1Id = new SelectList(db.Provincia, "ProvinciaId", "Nombre");
             ViewBag.Provincia2Id = new SelectList(db.Provincia, "ProvinciaId", "Nombre");
-            ViewBag.Localidad1Id = new SelectList(db.Localidad, "LocalidadId", "Nombre");
-            ViewBag.Localidad2Id = new SelectList(db.Localidad, "LocalidadId", "Nombre");
+            ViewBag.Localidad1Id = new List<SelectListItem>();
+            ViewBag.Localidad2Id = new List<SelectListItem>();
             ViewBag.EstadoCivilId = new SelectList(db.EstadoCivil, "EstadoCivilId", "Descripcion");
             ViewBag.SexoId = new SelectList(db.Sexo, "SexoId", "Descripcion");
             ViewBag.CarreraId = new SelectList(db.Carrera, "CarreraId", "Nombre");
-            ViewData["NacId"] = 1;
 
             return View();
         }
 
-        public ActionResult BuscarNac(int? id)
-        {
-            ViewData["NacId"] = id;
-            return Json(id, JsonRequestBehavior.AllowGet);
-        }
 
         public ActionResult BuscarLocNac(int? id)
         {
@@ -184,7 +178,7 @@ namespace Preinscripcion.Controllers
                 //byte?[] adjunto = new byte?[file.ContentLength];
                 byte[] adjunto = new byte[file.ContentLength];
                 file.InputStream.Read(adjunto, 0, adjunto.Length);
-                //Convert.ToBase64String(adjunto) --> PARA EL VERIFICARDATOS
+                //Convert.ToBase64String(adjunto);
                 return adjunto;
 
             }
