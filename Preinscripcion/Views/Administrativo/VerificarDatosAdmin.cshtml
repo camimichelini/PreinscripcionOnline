@@ -160,6 +160,8 @@
                     </div>
                     <div class="textoform selectfile">
                         <input type="file" id="FotoCarnet" name="FotoCarnet">
+                         <input type="text" id="fotoc" name="fotoc" value="@ViewData["FotoCarnet"]" style="display:none">
+
                          @{ if (ViewData["FotoCarnet"] != null)
                              {
                                  <a href="data:image/jpeg;base64,@ViewData["FotoCarnet"]" target="_blank" download="FotoCarnet.jpg">Foto Carnet</a>
@@ -201,6 +203,7 @@
                     </div><br>
                     <div class="textoform">
                         <input type="file" id="FotoDoc" name="FotoDoc">
+                         <input type="text" id="fotod" name="fotod" value="@ViewData["FotoDoc"]" style="display:none">
                           @{ if (ViewData["FotoDoc"] != null)
                              {
                                  <a href="data:image/jpeg;base64,@ViewData["FotoDoc"]" target="_blank" download="FotoDoc.jpg">Fotocopia documento</a>
@@ -252,6 +255,7 @@
 
                     <div class="textoform selectfile">
                         <input type="file" id="Analitico" name="Analitico">
+                        <input type="text" id="analit" name="analit" value="@ViewData["Analitico"]" style="display:none">
                          @{ if (ViewData["Analitico"] != null)
                              {
                                  <a href="data:image/jpeg;base64,@ViewData["Analitico"]" target="_blank" download="Analitico.pdf"> Analitico</a>
@@ -263,9 +267,10 @@
 
                     <div class="textoform selectfile">
                         <input id="Certificado" type="file" name="CertificadoTrabajo">
+                         <input type="text" id="certificado" name="certificado" value="@ViewData["CertificadoTrabajo"]" style="display:none">
                           @{ if (ViewData["CertificadoTrabajo"] != null)
                              {
-                                 <a href="data:image/jpeg;base64,@ViewData["CertificadoTrabajo"]" target="_blank" download="CertificadoTrabajo.pdf"> Certificado de trabajo</a>
+                                 <a href="data:image/pdf;base64,@ViewData["CertificadoTrabajo"]" target="_blank" download="CertificadoTrabajo.pdf"> Certificado de trabajo</a>
                             }
 
                            }

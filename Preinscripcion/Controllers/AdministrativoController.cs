@@ -95,8 +95,9 @@ namespace Preinscripcion.Controllers
             }
         }
 
+        [HttpPost]
         public ActionResult FinInscripcion([Bind(Include = "PersonaId,Nombre,Apellido,TipoDocId,NroDoc,Telefono,Celular,Mail, Domicilio, NomyApePMT, EstadoCivilId, NacionalidadId, Localidad1Id, Localidad2Id, Provincia1Id, Provincia2Id, CarreraId, SexoId, FechaNacimiento, Emancipacion, NombreColegio, TituloColegio")] Alumno alumno,
-            HttpPostedFileBase FotoCarnet, HttpPostedFileBase FotoDoc, HttpPostedFileBase CertificadoTrabajo, HttpPostedFileBase Analitico)
+            HttpPostedFileBase FotoCarnet, HttpPostedFileBase FotoDoc, HttpPostedFileBase CertificadoTrabajo, HttpPostedFileBase Analitico, string fotod, string fotoc, string analit, string certificado)
         {
             System.Int32 legajo = (from alu in db.Alumno select alu.Legajo) .Max();
 
@@ -109,22 +110,124 @@ namespace Preinscripcion.Controllers
                 alumno.Legajo = legajo + 1;
             }
 
-
-
-            if (ModelState.IsValid)
+            if (alumno.NacionalidadId != 1)
             {
-                using (var ctx = new PreinscripcionContext())
+                alumno.Provincia1Id = 999;
+                alumno.Localidad1Id = 999;
+            }
+
+            if ((alumno.Provincia1Id != 0) & (alumno.Localidad1Id != 0) & (alumno.Provincia2Id != 0) & (alumno.Localidad2Id != 0))
+            {
+                if (ModelState.IsValid)
                 {
-                    
-                    ctx.Persona.Add(alumno);
-                    ctx.SaveChanges();
+                    using (var ctx = new PreinscripcionContext())
+                    {
+
+                        if (FotoDoc != null)
+                        {
+                            alumno.FotoDoc = FileToArrayByte(FotoDoc);
+                        }
+                        else if (fotod != null)
+                        {
+                            byte[] foto = Convert.FromBase64String(fotod);
+                            alumno.CertificadoTrabajo = foto;
+                        }
+
+
+
+                        if (CertificadoTrabajo != null)
+                        {
+                            alumno.CertificadoTrabajo = FileToArrayByte(CertificadoTrabajo);
+
+                        }
+                        else if (certificado != null)
+                        {
+                            byte[] cert = Convert.FromBase64String(certificado);
+                            alumno.CertificadoTrabajo = cert;
+                        }
+
+
+
+                        if (fotoc != null)
+                        {
+                            alumno.FotoCarnet = FileToArrayByte(FotoCarnet);
+                        }
+                        else if (fotoc != null)
+                        {
+                            byte[] FotoCarn = Convert.FromBase64String(fotoc);
+                            alumno.FotoCarnet = FotoCarn;
+                        }
+
+
+
+                        if (Analitico != null)
+                        {
+                            alumno.Analitico = FileToArrayByte(Analitico);
+                        }
+                        else if (analit != null)
+                        {
+                            byte[] anal = Convert.FromBase64String(analit);
+                            alumno.Analitico = anal;
+                        }
+                            
+
+
+
+
+
+                        ctx.Persona.Add(alumno);
+                        ctx.SaveChanges();
+                    }
                 }
+            }
+
+            else
+            {
+                if (alumno.Provincia1Id == 0)
+                {
+                    TempData["mensajeerror"] = "Elija la provincia de nacimiento";
+                    return RedirectToAction("VerificarDatosAdmin", "Administrativo");
+                }
+
+                if (alumno.Localidad1Id == 0)
+                {
+                    TempData["mensajeerror"] = "Elija la localidad de nacimiento";
+                    return RedirectToAction("VerificarDatosAdmin", "Administrativo");
+                }
+
+                if (alumno.Provincia2Id == 0)
+                {
+                    TempData["mensajeerror"] = "Elija la provincia de domicilio";
+                    return RedirectToAction("VerificarDatosAdmin", "Administrativo");
+                }
+
+                if (alumno.Localidad2Id == 0)
+                {
+                    TempData["mensajeerror"] = "Elija la localidad de domicilio";
+                    return RedirectToAction("VerificarDatosAdmin", "Administrativo");
+                }
+           
      
             }
             ViewData["Nombre"] = alumno.Nombre; 
             ViewData["Apellido"] = alumno.Apellido;
             ViewData["Legajo"] = alumno.Legajo;
             return View();
+        }
+
+
+        private static byte[] FileToArrayByte(HttpPostedFileBase file) //poner ? al lado de byte[]
+        {
+            if ((file != null) && (file.ContentLength > 0))
+            {
+                //byte?[] adjunto = new byte?[file.ContentLength];
+                byte[] adjunto = new byte[file.ContentLength];
+                file.InputStream.Read(adjunto, 0, adjunto.Length);
+                //Convert.ToBase64String(adjunto);
+                return adjunto;
+
+            }
+            return null;
         }
 
         public ActionResult BuscarDoc()
@@ -209,7 +312,7 @@ namespace Preinscripcion.Controllers
                 if (alum.FotoDoc != null)
                 {
                     string FotocDoc = Convert.ToBase64String(alum.FotoDoc, 0, alum.FotoDoc.Length);
-                    ViewData["FotocDoc"] = FotocDoc;
+                    ViewData["FotoDoc"] = FotocDoc;
                 }
 
 
