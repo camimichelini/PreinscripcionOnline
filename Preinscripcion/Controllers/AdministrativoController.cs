@@ -10,7 +10,6 @@ using System.Web.Helpers;
 using System.Configuration;
 using Preinscripcion.AccesoDatos.Context;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Preinscripcion.Models;
 
 namespace Preinscripcion.Controllers
 {
@@ -176,9 +175,7 @@ namespace Preinscripcion.Controllers
             if (p != null)
             {
 
-                var alum = db.Alumno
-                       .Where(b => b.PersonaId == p.PersonaId)
-                       .FirstOrDefault();
+                Alumno alum = db.Alumno.Find(p.PersonaId);
                 ViewBag.TipoDocId = new SelectList(db.TipoDoc, "TipoDocId", "Descripcion", alum.TipoDocId);
                 ViewBag.NacionalidadId = new SelectList(db.Nacionalidad, "NacionalidadId", "Descripcion", alum.NacionalidadId);
                 ViewBag.Provincia1Id = new SelectList(db.Provincia, "ProvinciaId", "Nombre",alum.Provincia1Id );
