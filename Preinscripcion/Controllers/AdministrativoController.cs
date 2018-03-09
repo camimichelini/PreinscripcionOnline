@@ -95,7 +95,8 @@ namespace Preinscripcion.Controllers
             }
         }
 
-        public ActionResult FinInscripcion([Bind(Include = "PersonaId,Nombre,Apellido,TipoDocId,NroDoc,Telefono,Celular,Mail, Domicilio, NomyApePMT, EstadoCivilId, NacionalidadId, Localidad1Id, Localidad2Id, Provincia1Id, Provincia2Id, CarreraId, SexoId, FechaNacimiento, Emancipacion, NombreColegio, TituloColegio")] Alumno alumno)
+        public ActionResult FinInscripcion([Bind(Include = "PersonaId,Nombre,Apellido,TipoDocId,NroDoc,Telefono,Celular,Mail, Domicilio, NomyApePMT, EstadoCivilId, NacionalidadId, Localidad1Id, Localidad2Id, Provincia1Id, Provincia2Id, CarreraId, SexoId, FechaNacimiento, Emancipacion, NombreColegio, TituloColegio")] Alumno alumno,
+            HttpPostedFileBase FotoCarnet, HttpPostedFileBase FotoDoc, HttpPostedFileBase CertificadoTrabajo, HttpPostedFileBase Analitico)
         {
             System.Int32 legajo = (from alu in db.Alumno select alu.Legajo) .Max();
 
