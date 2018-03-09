@@ -130,7 +130,7 @@ namespace Preinscripcion.Controllers
                         else if (fotod != null)
                         {
                             byte[] foto = Convert.FromBase64String(fotod);
-                            alumno.CertificadoTrabajo = foto;
+                            alumno.FotoDoc = foto;
                         }
 
 
@@ -148,7 +148,7 @@ namespace Preinscripcion.Controllers
 
 
 
-                        if (fotoc != null)
+                        if (FotoCarnet != null)
                         {
                             alumno.FotoCarnet = FileToArrayByte(FotoCarnet);
                         }
