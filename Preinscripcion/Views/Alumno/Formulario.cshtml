@@ -73,7 +73,7 @@
                         <input id="Apellido" name="Apellido" class="form-control inputform" type="text" placeholder=" " required>
                     </div>
                     <div class="textoform">
-                        <input id="NroDoc" name="NroDoc" class="form-control inputform" type="number" placeholder=" " required>
+                        <input id="NroDoc" name="NroDoc" class="form-control inputform nrodoc" type="number" placeholder=" " required>
                     </div>
                     <div class="textoform">
                         @*@Html.DropDownList("NacionalidadId", null, htmlAttributes: new { @class = "form-control inputform selectform" })
@@ -120,7 +120,7 @@
                     <div class="textoform textolabel"><label for="Telefono">Teléfono*:</label> </div>
                     <div class="textoform textolabel"><label for="Email">Email*:</label> </div>
                     @* ARCHIVO *@
-                    <div class="textoform textolabel"><label for="FotoCarnet">Foto Carnet:</label></div>
+                    <div class="textoform textolabel"><label for="FotoCarnet">Foto Carnet**:</label></div>
                 </div>
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
                     <div class="textoform">
@@ -149,7 +149,7 @@
                     <div class="textoform textolabel"> <label for="Celular">Celular*:</label></div>
                     <div class="textoform textolabel"> <label for="Emancipacion">Emancipación*:</label></div>
                     @* ARCHIVO *@
-                    <div class="textoform textolabel"> <label for="FotoDoc">Fotocopia Documento:</label> </div>
+                    <div class="textoform textolabel"> <label for="FotoDoc">Fotocopia Documento**:</label> </div>
                 </div>
 
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsder">
@@ -192,8 +192,8 @@
                     <div class="textoform textolabel textolargo"> <label for="NombreColegio">Nombre Colegio Secundario*:</label> </div>
                     <div class="textoform textolabel textolargo"> <label for="TituloColegio">Título Colegio Secundario*:</label> </div>
                     @* ARCHIVOS *@
-                    <div class="textoform textolabel"> <label for="Analitico">Analítico:</label> </div>
-                    <div class="textoform textolabel"> <label for="Certificado">Certificado:</label> </div>
+                    <div class="textoform textolabel"> <label for="Analitico">Analítico***:</label> </div>
+                    <div class="textoform textolabel"> <label for="Certificado">Certificado***:</label> </div>
                 </div>
                 <div class="col-xs-3 col-md-3 col-sm-3 form-group inputsizq">
                     <div class="textoform">
@@ -230,6 +230,9 @@
 <br /><br />
 <br />
 <div class="textooscuro">*: Campos obligatorios</div>
+<div class="textooscuro">**: Sólo formato ".jpg"</div>
+<div class="textooscuro">***: Sólo formato ".pdf"</div>
+
 
 @if (TempData["mensajeerror"] != null)
 {
